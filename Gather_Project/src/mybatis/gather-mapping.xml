@@ -3,5 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="my.gather-mapping">
-
+	<select id="listTeam" parameterType="java.lang.Integer" resultType="TeamDTO">
+		<![CDATA[
+			SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME as TNAME
+			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX and M_IDX=#{mIdx}
+		]]>
+	</select>
 </mapper>
