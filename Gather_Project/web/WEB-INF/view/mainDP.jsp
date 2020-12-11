@@ -21,12 +21,20 @@
 	</ul>
 	
 	<h3>팀 소개</h3>
+		팀 이름 : ${tname}<br>
+		<c:forEach items="${mlist}" var="ob">
+		팀원 : ${ob}<br>
+		</c:forEach>
 	<h3>기획</h3>
+		기획 주제 : ${des.dName}<br>
+		<c:forEach items="${purp}" var="ob">
+		기획목적 : ${ob}<br>
+		</c:forEach>
 	<h3>진행</h3>	
 </c:if>
 <c:if test="${empty list}">
 	<ul style="list-style: none;">
-		<li><a href=''>팀 만들기</a></li>
+		<li><a href='#'>팀 만들기</a></li>
 	</ul>
 	
 현재 참여하고 있는 팀이 없습니다.

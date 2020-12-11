@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gather.entity.DesignDTO;
 import com.gather.entity.TeamDTO;
 
 @Service
@@ -16,9 +17,16 @@ public class MainDPService {
 		return dao.listTeam(mIdx);
 	}
 
-	public TeamDTO Team(int mIdx) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> TeamMember(int lastTIdx) {
+		return dao.TeamMember(lastTIdx);
+	}
+
+	public DesignDTO getDesign(int tIdx) {
+		return dao.getDesign(tIdx);
+	}
+
+	public List<String> designPurpose(int dIdx) {
+		return dao.designPurpose(dIdx);
 	}
 
 }

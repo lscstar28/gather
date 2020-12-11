@@ -9,4 +9,20 @@
 			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX and M_IDX=#{mIdx}
 		]]>
 	</select>
+	<select id="teamMember" parameterType="java.lang.Integer" resultType="java.lang.String">
+		<![CDATA[
+			SELECT NAME FROM MY_T,MEMBER 
+			WHERE MY_T.M_IDX=MEMBER.M_IDX AND T_IDX=#{lastTIdx}
+		]]>
+	</select>
+	<select id="getDesign" parameterType="java.lang.Integer" resultType="DesignDTO">
+		<![CDATA[
+			SELECT D_IDX AS DIDX, D_NAME AS DNAME FROM DESIGN WHERE T_IDX=#{tIdx}
+		]]>
+	</select>
+	<select id="getdesignPurpose" parameterType="java.lang.Integer" resultType="java.lang.String">
+		<![CDATA[
+			SELECT D_PURP FROM D_PURP WHERE D_IDX=#{dIdx}
+		]]>
+	</select>
 </mapper>
