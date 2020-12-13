@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gather.entity.DesignDTO;
 import com.gather.entity.TeamDTO;
+import com.gather.entity.WorkDTO;
 
 @Service
 public class MainDPService {
@@ -27,6 +28,18 @@ public class MainDPService {
 
 	public List<String> designPurpose(int dIdx) {
 		return dao.designPurpose(dIdx);
+	}
+
+	public List<String> designContent(int dIdx) {
+		return dao.designContent(dIdx);
+	}
+
+	public List<WorkDTO> workList(int tIdx) {
+		return dao.workList(tIdx);
+	}
+
+	public List<String> CallMember(int tIdx) {
+		return dao.CallMember(tIdx);
 	}
 
 }

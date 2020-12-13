@@ -7,6 +7,7 @@
 		<typeAlias type="com.gather.entity.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.gather.entity.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.gather.entity.DesignDTO" alias="DesignDTO"/>
+		<typeAlias type="com.gather.entity.WorkDTO" alias="WorkDTO"/>
 	</typeAliases>
 	<!-- 쿼리문 -->
 	<mappers>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gather.entity.DesignDTO;
 import com.gather.entity.TeamDTO;
+import com.gather.entity.WorkDTO;
 
 @Repository("mainDPDAO")
 public class MainDPDAO {
@@ -32,6 +33,20 @@ public class MainDPDAO {
 	public List<String> designPurpose(int dIdx) {
 		System.out.println("dao dIdx : " + dIdx);
 		return factory.openSession().selectList("my.gather-mapping.getdesignPurpose", dIdx);
+	}
+
+	public List<String> designContent(int dIdx) {
+		System.out.println("dao dIdx : " + dIdx);
+		return factory.openSession().selectList("my.gather-mapping.getdesignContent", dIdx);
+	}
+
+	public List<WorkDTO> workList(int tIdx) {
+		System.out.println("dao tIdx : " + tIdx);
+		return factory.openSession().selectList("my.gather-mapping.getWorkList", tIdx);
+	}
+
+	public List<String> CallMember(int tIdx) {
+		return factory.openSession().selectList("my.gather-mapping.getCallMember", tIdx);
 	}
 
 }

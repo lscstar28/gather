@@ -25,4 +25,25 @@
 			SELECT D_PURP FROM D_PURP WHERE D_IDX=#{dIdx}
 		]]>
 	</select>
+	<select id="getdesignContent" parameterType="java.lang.Integer" resultType="java.lang.String">
+		<![CDATA[
+			SELECT D_CON FROM D_CON WHERE D_IDX=#{dIdx}
+		]]>
+	</select>
+	<select id="getWorkList" parameterType="java.lang.Integer" resultType="WorkDTO">
+		<![CDATA[
+			SELECT 
+			W_IDX AS WIDX, WORK, W_PROC AS WPROC, TO_CHAR(W_SDATE, 'yyyy-mm-dd' )AS WSDATE,
+			TO_CHAR(W_EDATE, 'yyyy-mm-dd' )AS WEDATE, W_MEM AS WMEM, T_IDX AS TIDX 
+			FROM WORK WHERE T_IDX=#{tIdx}
+
+		]]>
+	</select>
+	<select id="getCallMember" parameterType="java.lang.Integer" resultType="java.lang.String">
+		<![CDATA[
+			SELECT NAME 
+			FROM MEMBER, CALL 
+			WHERE MEMBER.M_IDX = CALL.M_IDX AND T_IDX=6 
+		]]>
+	</select>
 </mapper>
