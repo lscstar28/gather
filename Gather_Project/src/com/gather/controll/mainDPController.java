@@ -22,7 +22,7 @@ public class mainDPController {
 	@Autowired
 	HttpSession session;
 
-	@RequestMapping(value = "/teamList.do")
+	@RequestMapping(value = "/mainDP.do")
 	public String teamList(@RequestParam("mIdx") int mIdx, Model model) {
 		System.out.println("mIdx : " + mIdx);
 //		int mIdx = session.getAttribute("mIdx");
@@ -31,22 +31,22 @@ public class mainDPController {
 
 		if (list != null) {
 			//팀 소개
-			int tIdx = list.size();
-			String name = list.get(tIdx - 1).gettName();
-			List<String> mlist = service.TeamMember(list.size());
-			List<String> clist = service.CallMember(tIdx);
+			int tIdx = list.size();										//팀 번호 변수
+			String name = list.get(tIdx - 1).gettName();				//팀 이름
+			List<String> mlist = service.TeamMember(list.size());		//팀 맴버 리스트
+			List<String> clist = service.CallMember(tIdx);				//대기중인 팀 맴버 리스트
 			model.addAttribute("tname", name);
 			model.addAttribute("mlist", mlist);
 			model.addAttribute("clist", clist);
 			//기획
-			DesignDTO des = service.getDesign(tIdx);
-			List<String> purp = service.designPurpose(des.getdIdx());
-			List<String> dCon = service.designContent(des.getdIdx());
+			DesignDTO des = service.getDesign(tIdx);					//기획 객체
+			List<String> purp = service.designPurpose(des.getdIdx());	//기획 목적
+			List<String> dCon = service.designContent(des.getdIdx());	//기획 내용(기능)
 			model.addAttribute("des", des);
 			model.addAttribute("purp", purp);
 			model.addAttribute("dCon", dCon);
 			//진행
-			List<WorkDTO> wlist = service.workList(tIdx);
+			List<WorkDTO> wlist = service.workList(tIdx);				//진행 객체 리스트
 			model.addAttribute("wlist", wlist);
 		}
 

@@ -15,11 +15,11 @@
 	<c:forEach items="${list}" var="ob">
 		<li>${ob.tIdx} : ${ob.tName}</li>
 	</c:forEach>
-		<li><a href=''>팀 만들기</a></li>
+		<li><a href='#'>팀 만들기</a></li>
 	</ul>
 	
 	<h3>팀 소개</h3>
-		팀 이름 : ${tname}<br>
+		팀 이름 : ${tname} <input type="button" value="수정"><br>
 		-----팀원 -----<br>
 		<c:forEach items="${mlist}" var="ob">
 		 ${ob}<br>
@@ -28,26 +28,39 @@
 		<c:forEach items="${clist}" var="ob">
 		 ${ob}<br>
 		</c:forEach>
+		<input type="button" value="추가하기"><br>
 	<h3>기획</h3>
 		기획 주제 : ${des.dName}<br>
 		-----기획목적 -----<br>
 		<c:forEach items="${purp}" var="ob">
 		${ob}<br>
 		</c:forEach>
+		<input type="button" value="추가하기"><br>
 		-----기획내용-----<br>
 		<c:forEach items="${dCon}" var="ob">
 		${ob}<br>
 		</c:forEach>
+		<input type="button" value="추가하기"><br>
 	<h3>진행</h3>	
 		-----업무 -----<br>
 		<c:forEach items="${wlist}" var="ob">
 		${ob.work} -- ${ob.wMem} <br>
 		</c:forEach>
-		업무 총 기한 : <br>
+		<input type="button" value="추가하기"><br>
+		
+		업무 총 기한 :  <input type="button" value="수정하기"><br><br>
 		-----진행도-----<br>
 		<c:forEach items="${wlist}" var="ob">
-		<c:if test=""></c:if>
-		${ob.work} / ${ob.wProc} /  <br>
+		<c:if test="${ob.wProc>=3}">
+		${ob.work} / 진행 완료 <br>
+		</c:if>
+		<c:if test="${ob.wProc==2}">
+		${ob.work} / 진행 중  / <input type="button" value="진행 완료"><br>
+		</c:if>
+		<c:if test="${ob.wProc==1}">
+		${ob.work} / 진행 전 / <input type="button" value="진행 시작"><br>
+		</c:if>
+		
 		</c:forEach>
 		-----진행 날짜-----<br>
 		<c:forEach items="${wlist}" var="ob">
