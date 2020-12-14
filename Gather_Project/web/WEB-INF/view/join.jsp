@@ -94,8 +94,8 @@
 		<form id="joinWriteForm" action="/gather/insertJoin.do" method="GET">
 			아이디: <input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required>
 			<span id="resultID"></span><br>
-			비밀번호: <input type="text" name="inputPW"><br>
-			비밀번호 확인: <input type="text" name="checkPW">
+			비밀번호: <input type="password" name="inputPW"><br>
+			비밀번호 확인: <input type="password" name="checkPW">
 			<span id="resultPW"></span><br>
 			이름: <input type="text" name="inputName"><br>
 			연락처: <input type="text" name="inputPhone"><br>
