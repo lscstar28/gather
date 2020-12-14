@@ -8,5 +8,6 @@
 </head>
 <body>
 <input type="button" value="기본화면으로" onclick="location.href='mainDP.do?mIdx=1'">
+<a href="/gather/join.do">회원가입</a>
 </body>
 </html>
