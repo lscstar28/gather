@@ -5,9 +5,22 @@
 <mapper namespace="my.gather-mapping">
 	<select id="listTeam" parameterType="java.lang.Integer" resultType="TeamDTO">
 		<![CDATA[
-			SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME as TNAME
-			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX and M_IDX=#{mIdx}
+			SELECT ROWNUM, A.*
+			FROM(SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME AS TNAME
+			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX AND M_IDX=#{mIdx}
 			ORDER BY TIDX DESC
+			) A
+		]]>
+	</select>
+	<select id="getRn" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT ROWNUM
+			FROM(SELECT ROWNUM, A.*
+			FROM(SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME AS TNAME
+			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX AND M_IDX=#{mIdx}
+			ORDER BY TIDX DESC
+			) A)
+			WHERE TIDX = (SELECT T_IDX FROM L_TEAM WHERE M_IDX=#{mIdx})
 		]]>
 	</select>
 	<select id="teamMember" parameterType="java.lang.Integer" resultType="java.lang.String">

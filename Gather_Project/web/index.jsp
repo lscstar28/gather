@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="button" value="기본화면으로" onclick="location.href='teamList.do?mIdx=1'">
+<input type="button" value="기본화면으로" onclick="location.href='mainDP.do?mIdx=1'">
 </body>
 </html>

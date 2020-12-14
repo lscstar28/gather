@@ -24,16 +24,17 @@ public class mainDPController {
 
 	@RequestMapping(value = "/mainDP.do")
 	public String teamList(@RequestParam("mIdx") int mIdx, Model model) {
-		System.out.println("mIdx : " + mIdx);
-//		int mIdx = session.getAttribute("mIdx");
+		System.out.println("========================================");//console 경계선
+		System.out.println("mIdx : " + mIdx);//로그인 번호 확인
 		List<TeamDTO> list = service.listTeam(mIdx);
 		model.addAttribute("list", list);
 		System.out.println("listsize : " + list.size());
 		if (list.size() != 0) {
+			int rn = service.getRn(mIdx); // 마지막에 수정한 팀 보기
 			//팀 소개
-			int tIdx = list.get(0).gettIdx();		//마지막 팀 번호 변수
+			int tIdx = list.get(rn-1).gettIdx();		//마지막 팀 번호 변수
 			System.out.println("main tidx" + tIdx);
-			String name = list.get(0).gettName();			//팀 이름
+			String name = list.get(rn-1).gettName();			//팀 이름
 			List<String> mlist = service.TeamMember(tIdx);		//팀 맴버 리스트
 			List<String> clist = service.CallMember(tIdx);		//대기중인 팀 맴버 리스트
 			model.addAttribute("tname", name);
@@ -56,5 +57,11 @@ public class mainDPController {
 		}
 
 		return "mainDP";
+	}
+	
+	@RequestMapping(value = "/LastTeam.do")
+	public String LastTeam(@RequestParam("mIdx") int mIdx, Model model) {
+		model.addAttribute("mIdx", mIdx);
+		return "redirect:/mainDP.do";
 	}
 }

@@ -49,4 +49,8 @@ public class MainDPDAO {
 		return factory.openSession().selectList("my.gather-mapping.getCallMember", tIdx);
 	}
 
+	public int getRn(int mIdx) {
+		return factory.openSession().selectOne("my.gather-mapping.getRn", mIdx);
+	}
+
 }

@@ -42,4 +42,8 @@ public class MainDPService {
 		return dao.CallMember(tIdx);
 	}
 
+	public int getRn(int mIdx) {
+		return  dao.getRn(mIdx);
+	}
+
 }

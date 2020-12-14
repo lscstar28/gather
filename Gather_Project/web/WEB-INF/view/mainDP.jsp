@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h1>Gather</h1>
+	<input type="button" value="test" onclick="location.href='LastTeam.do?mIdx=3'">
 		<input type="button" value="logout">
 			<c:if test="${!empty list}">
 				<ul style="list-style: none;">
@@ -48,7 +49,7 @@
 				<c:if test="${empty des.dName}">
 					<a href='#'>기획 만들기</a>
 				</c:if>
-				<h3>진행</h3>	
+				<h3>업무/진행</h3>	
 				<c:if test="${!empty wlist}">
 					-----업무 -----<br>
 					<c:forEach items="${wlist}" var="ob">
@@ -74,6 +75,7 @@
 						${ob.work} / ${ob.wSDate} ~ ${ob.wEDate}<br>
 					</c:forEach>
 				</c:if>
+
 			</c:if>
 		<c:if test="${empty wlist}">
 			<a href='#'>업무/진행 만들기</a>
