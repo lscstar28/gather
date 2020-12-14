@@ -26,9 +26,11 @@ public class mainDPController {
 	public String teamList(@RequestParam("mIdx") int mIdx, Model model) {
 		System.out.println("========================================");//console 경계선
 		System.out.println("mIdx : " + mIdx);//로그인 번호 확인
+		
 		List<TeamDTO> list = service.listTeam(mIdx);
 		model.addAttribute("list", list);
 		System.out.println("listsize : " + list.size());
+		
 		if (list.size() != 0) {
 			int rn = service.getRn(mIdx); // 마지막에 수정한 팀 보기
 			//팀 소개
