@@ -54,7 +54,7 @@ public class MemberController {
 		member.setPhone(request.getParameter("inputPhone"));
 		
 		int n = memberService.insertMember(member);
-		
+		System.out.println("n: "+n);
 		if(n>0) {
 			System.out.println("회원가입 성공");
 		}else {

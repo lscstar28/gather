@@ -23,6 +23,7 @@ public class MemberService {
 	
 	//회원가입 (Insert)
 	public int insertMember(MemberDTO member) {
+		System.out.println("회원가입 서비스");
 		return memberDao.insertMember(member);
 	}
 	

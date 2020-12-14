@@ -19,6 +19,7 @@ public class MemberDAO {
 	}
 
 	public int insertMember(MemberDTO member) {
+		System.out.println("회원가입 다오");
 		int n=factory.openSession().insert("my.memberMapper.insertMember",member);
 		return n;
 	}

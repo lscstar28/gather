@@ -240,6 +240,7 @@ INSERT INTO MEMBER VALUES(2, 'abcd', 'abcd', '김경동', '01011112222');
 INSERT INTO MEMBER VALUES(3, 'cccc', 'cccc', '이성찬', '01033334444');
 INSERT INTO MEMBER VALUES(4, 'dddd', 'dddd', '관리자4', '01055552222');
 INSERT INTO MEMBER VALUES(5, 'eeee', 'eeee', '관리자5', '01066662222');
+INSERT INTO MEMBER VALUES(SQ_MIDX.NEXTVAL,'asd','123','신똥','01077773333');
 --------------------팀 만들기----------------------
 INSERT INTO TEAM VALUES(1, '하나 팀');
 INSERT INTO TEAM VALUES(2, '둘 팀');
