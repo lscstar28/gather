@@ -3,6 +3,7 @@ package com.gather.controll;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,5 +64,37 @@ public class MemberController {
 		
 		return "join";
 	}
+	
+	//(로그인화면으로 이동)-------------------------------------
+		@RequestMapping(value="/login.do") 
+		public String login() {
+			return "/login"; 
+		}
+
+		//전체 출력하기------------------------------------------
+		@RequestMapping(value="/checklogin.do")
+			public String checklogin(HttpServletRequest request) {
+
+			String loginId = request.getParameter("id");
+			String loginPw = request.getParameter("pw");
+			
+			MemberDTO member = new MemberDTO();
+
+			
+			System.out.println("loginId: " + loginId);
+			System.out.println("loginId: " + loginPw);
+			
+			member =memberService.checklogin(loginId,loginPw);
+
+			System.out.println("member: "+member);
+
+			if(member!=null) {
+			HttpSession session=request.getSession();
+			session.setAttribute("logOK", member);
+			return "/mainDP";
+			}else {
+				return "/login";
+			}
+		}
 	
 }

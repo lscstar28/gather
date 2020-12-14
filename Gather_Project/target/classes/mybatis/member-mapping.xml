@@ -14,4 +14,14 @@
 			INSERT INTO MEMBER VALUES(SQ_MIDX.NEXTVAL,#{id},#{pw},#{name},#{phone})
 		]]>
 	</insert>
+	
+		<!-- 로그인 -->
+	<select id="login" parameterType="ob" resultType="ob">
+		<![CDATA[
+  		SELECT ID, PW FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+ 			]]>
+	</select>
+	
 </mapper>
+
+

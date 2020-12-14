@@ -27,4 +27,9 @@ public class MemberService {
 		return memberDao.insertMember(member);
 	}
 	
+	//로그인(select)
+	public MemberDTO checklogin(String id, String pwd) {
+		return memberDao.checklogin(id,pwd);
+	}
+	
 }

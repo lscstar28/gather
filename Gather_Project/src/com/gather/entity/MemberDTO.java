@@ -9,8 +9,15 @@ public class MemberDTO {
 	
 	public MemberDTO() {
 		super();
-	}
+	}	
 
+	public MemberDTO(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		
+	}
+	
 	public MemberDTO(int m_idx, String id, String pw, String name, String phone) {
 		super();
 		this.m_idx = m_idx;
