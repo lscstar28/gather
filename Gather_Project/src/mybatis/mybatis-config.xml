@@ -13,7 +13,7 @@
 	<mappers>
 		<mapper resource="mybatis/gather-mapping.xml"/>
 		<mapper resource="mybatis/member-mapping.xml"/>  <!-- 동재꺼 -->
-		<mapper resource="mybatis/Login-mapping.xml"/>   <!-- 경동꺼 -->
+<!-- 		<mapper resource="mybatis/Login-mapping.xml"/>   경동꺼 -->
 	</mappers>
 	
 	
