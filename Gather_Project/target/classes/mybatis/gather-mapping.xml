@@ -14,8 +14,8 @@
 	</select>
 	<select id="getRn" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		<![CDATA[
-			SELECT ROWNUM
-			FROM(SELECT ROWNUM, A.*
+			SELECT rn
+			FROM(SELECT ROWNUM rn, A.*
 			FROM(SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME AS TNAME
 			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX AND M_IDX=#{mIdx}
 			ORDER BY TIDX DESC
@@ -58,6 +58,11 @@
 			SELECT NAME 
 			FROM MEMBER, CALL 
 			WHERE MEMBER.M_IDX = CALL.M_IDX AND T_IDX=#{tIdx}
+		]]>
+	</select>
+	<select id="LastTeam" parameterType="HashMap">
+		<![CDATA[		
+			UPDATE L_TEAM SET T_IDX=#{tIdx} WHERE M_IDX=#{mIdx} 
 		]]>
 	</select>
 </mapper>

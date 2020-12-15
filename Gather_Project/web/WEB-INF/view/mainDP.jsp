@@ -9,16 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- head -->
 	<h1>Gather</h1>
 	<input type="button" value="test" onclick="location.href='LastTeam.do?mIdx=3'">
 		<input type="button" value="logout">
+		<!-- side -->
 			<c:if test="${!empty list}">
 				<ul style="list-style: none;">
 				<c:forEach items="${list}" var="ob">
-					<li>${ob.tIdx} : ${ob.tName}</li>
+					<li><a href ="LastTeam.do?tIdx=${ob.tIdx}&mIdx=${mIdx}">${ob.tIdx} : ${ob.tName}</a></li>
 				</c:forEach>
-					<li><a href='#'>팀 만들기</a></li>
+					<li><a href='CreTeam.do?mIdx=${mIdx}'>팀 만들기</a></li>
 				</ul>
+				<!-- body(team) -->
 				<h3>팀 소개</h3>
 				팀 번호 : ${tIdx}
 				팀 이름 : ${tname} <input type="button" value="수정"><br>
@@ -33,6 +36,7 @@
 					</c:forEach>
 					<input type="button" value="추가하기"><br>
 				</c:if>
+				
 				<h3>기획</h3>
 				<c:if test="${!empty des.dName}">
 					기획 주제 : ${des.dName}<br>
@@ -50,6 +54,7 @@
 				<c:if test="${empty des.dName}">
 					<a href='#'>기획 만들기</a>
 				</c:if>
+				
 				<h3>업무/진행</h3>	
 				<c:if test="${!empty wlist}">
 					-----업무 -----<br>

@@ -1,6 +1,8 @@
 package com.mainDP.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,13 @@ public class MainDPService {
 
 	public int getRn(int mIdx) {
 		return  dao.getRn(mIdx);
+	}
+
+	public void LastTeam(int mIdx, int tIdx) {
+		Map<String, Integer> mt = new HashMap<String, Integer>();
+		mt.put("mIdx", mIdx);
+		mt.put("tIdx", tIdx);
+		dao.LastTeam(mt);
 	}
 
 }

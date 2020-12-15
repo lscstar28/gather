@@ -1,6 +1,7 @@
 package com.mainDP.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class MainDPDAO {
 
 	public int getRn(int mIdx) {
 		return factory.openSession().selectOne("my.gather-mapping.getRn", mIdx);
+	}
+
+	public void LastTeam(Map<String, Integer> mt) {
+		System.out.println(mt.get("mIdx") + ", " + mt.get("tIdx"));
+		factory.openSession().selectOne("my.gather-mapping.LastTeam", mt);
 	}
 
 }
