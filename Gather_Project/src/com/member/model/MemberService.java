@@ -28,8 +28,8 @@ public class MemberService {
 	}
 	
 	//로그인(select)
-//	public MemberDTO checklogin(String id, String pwd) {
-//		return memberDao.checklogin(id,pwd);
-//	}
+	public MemberDTO checklogin(String id, String pwd) {
+		return memberDao.checklogin(id,pwd);
+	}
 	
 }

@@ -25,12 +25,12 @@ public class MemberDAO {
 	}
 
 	//로그인다오--------------------------------------------------------
-//	public MemberDTO checklogin(String id, String pwd) {
-//		System.out.println("Dao");
-//		MemberDTO member = new MemberDTO(id,pwd);
-//		System.out.println("id,pwd : " + id + pwd);
-//		return factory.openSession().selectOne("my.memberMapper.login",member);
-//	}
+	public MemberDTO checklogin(String id, String pwd) {
+		System.out.println("Dao");
+		MemberDTO member = new MemberDTO(id,pwd);
+		System.out.println("id,pwd : " + id + pwd);
+		return factory.openSession().selectOne("my.memberMapper.login",member);
+	}
 
 }
 
