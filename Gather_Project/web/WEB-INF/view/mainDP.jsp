@@ -80,6 +80,7 @@
 			</c:if>
 		<c:if test="${empty wlist}">
 			<a href='#'>업무/진행 만들기</a>
+			<a href='work.do?tIdx=1'>업무 리스트보기</a>
 		</c:if>
 		<c:if test="${empty list}">
 			<ul style="list-style: none;">
