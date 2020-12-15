@@ -42,6 +42,7 @@ public class mainDPController {
 			model.addAttribute("tname", name);
 			model.addAttribute("mlist", mlist);
 			model.addAttribute("clist", clist);
+			model.addAttribute("tIdx", tIdx);
 			//기획
 			DesignDTO des = service.getDesign(tIdx);					//기획 객체
 			if(des != null) {

@@ -20,6 +20,7 @@
 					<li><a href='#'>팀 만들기</a></li>
 				</ul>
 				<h3>팀 소개</h3>
+				팀 번호 : ${tIdx}
 				팀 이름 : ${tname} <input type="button" value="수정"><br>
 				-----팀원 -----<br>
 				<c:forEach items="${mlist}" var="ob">
