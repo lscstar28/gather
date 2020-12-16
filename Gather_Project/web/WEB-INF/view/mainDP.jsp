@@ -82,6 +82,11 @@
 			<a href='#'>업무/진행 만들기</a>
 			<a href='work.do?tIdx=1'>업무 리스트보기</a>
 		</c:if>
+		
+		<c:if test="${empty wlist}">
+			<a href='conference.do?tIdx=1'>회의 리스트보기</a>
+		</c:if>
+		
 		<c:if test="${empty list}">
 			<ul style="list-style: none;">
 				<li><a href='#'>팀 만들기</a></li>
