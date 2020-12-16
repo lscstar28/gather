@@ -20,12 +20,22 @@
 					<li><a href ="LastTeam.do?tIdx=${ob.tIdx}&mIdx=${mIdx}">${ob.tIdx} : ${ob.tName}</a></li>
 				</c:forEach>
 					<li><a href='CreTeamPg.do?mIdx=${mIdx}'>팀 만들기</a></li>
+					<c:if test="${!empty confirmList}">
+					----- 응답 대기중인 팀 -----
+					<c:forEach items="${confirmList}" var="ob">
+						<li>${ob.tIdx} : ${ob.tName}
+						<input type="button" value="수락" onclick="location.href='confrim.do?tIdx=${ob.tIdx}&mIdx=${mIdx}&ptIdx=${tIdx}'">
+						<input type="button" value="취소" onclick="location.href='noConfrim.do?tIdx=${ob.tIdx}&mIdx=${mIdx}&ptIdx=${tIdx}'">
+						</li>
+					</c:forEach>
+					</c:if>
 				</ul>
 				<!-- body(team) -->
 				<div class=1>
 				<h3>팀 소개</h3>
 				팀 번호 : ${tIdx}
 				팀 이름 : ${tName} <input type="button" value="수정" onclick="location.href='UpTeamPg.do?mIdx=${mIdx}&tName=${tName}&tIdx=${tIdx}'"><br>
+				<input type="button" value="탈퇴하기" onclick="location.href='escape.do?mIdx=${mIdx}&tIdx=${tIdx}'"><br>
 				-----팀원 -----<br>
 				<c:forEach items="${mlist}" var="ob">
 					${ob}<br>
@@ -35,8 +45,8 @@
 					<c:forEach items="${clist}" var="ob">
 		 				${ob}<br>
 					</c:forEach>
-					<input type="button" value="추가하기" onclick="location.href='callMemPg.do?mIdx=${mIdx}&tIdx=${tIdx}'"><br>
 				</c:if>
+				<input type="button" value="추가하기" onclick="location.href='callMemPg.do?mIdx=${mIdx}&tIdx=${tIdx}'"><br>
 				</div>
 				<div class=2>
 				<h3>기획</h3>
@@ -92,7 +102,7 @@
 		</c:if>
 		<c:if test="${empty list}">
 			<ul style="list-style: none;">
-				<li><a href='#'>팀 만들기</a></li>
+				<li><a href='CreTeamPg.do?mIdx=${mIdx}'>팀 만들기</a></li>
 			</ul>
 
 			현재 참여하고 있는 팀이 없습니다.

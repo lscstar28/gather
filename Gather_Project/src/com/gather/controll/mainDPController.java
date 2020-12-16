@@ -34,8 +34,11 @@ public class mainDPController {
 		model.addAttribute("list", list);
 		System.out.println("listsize : " + list.size());
 		
-//		List<String> callList = service.callConfrim(mIdx);
-			
+		List<TeamDTO> confirmList = service.callConfrim(mIdx);
+		model.addAttribute("confirmList", confirmList);
+			for (TeamDTO teamDTO : confirmList) {
+				System.out.println(teamDTO.gettName());
+			}
 		if (list.size() != 0) {
 			int rn = service.getRn(mIdx); // 마지막에 수정한 팀 보기
 			System.out.println(rn);
@@ -75,6 +78,13 @@ public class mainDPController {
 	public String LastTeam(@RequestParam("mIdx") int mIdx, @RequestParam("tIdx") int tIdx, Model model) {
 		model.addAttribute("mIdx", mIdx);
 		int n = service.LastTeam(mIdx, tIdx);
+		return "redirect:/mainDP.do";
+	}
+	
+	@RequestMapping(value = "/LastTeamDel.do")
+	public String LastTeamDel(@RequestParam("mIdx") int mIdx, @RequestParam("tIdx") int tIdx, Model model) {
+		model.addAttribute("mIdx", mIdx);
+		int n = service.LastTeamDel(mIdx, tIdx);
 		return "redirect:/mainDP.do";
 	}
 	

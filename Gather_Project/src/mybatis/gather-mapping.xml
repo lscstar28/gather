@@ -70,4 +70,16 @@
 			insert into L_TEAM values(#{mIdx}, #{tIdx})
 		]]>
 	</insert>
+	<select id="callConfrim" parameterType="java.lang.Integer" resultType="TeamDTO">
+		<![CDATA[		
+			SELECT TEAM.T_IDX as tIdx, T_NAME as tName FROM TEAM,CALL 
+			WHERE TEAM.T_IDX = CALL.T_IDX AND M_IDX=#{mIdx}
+			GROUP BY TEAM.T_IDX,T_NAME
+		]]>
+	</select>
+	<delete id="LastTeamDel" parameterType="java.lang.Integer">
+		<![CDATA[		
+			delete L_TEAM where m_IDX=#{mIdx}
+		]]>
+	</delete>
 </mapper>

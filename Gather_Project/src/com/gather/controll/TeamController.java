@@ -1,7 +1,5 @@
 package com.gather.controll;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ public class TeamController {
 	@Autowired
 	private TeamService service;
 	
+	//-------------------- 팀 만들기 --------------------
 	@RequestMapping(value = "/CreTeamPg.do")
 	public String CreTeamPg(@RequestParam("mIdx") int mIdx, Model model) {
 		model.addAttribute("mIdx", mIdx);
@@ -26,14 +25,14 @@ public class TeamController {
 	@RequestMapping(value="/CreTeam.do", method=RequestMethod.POST)
 	public String CreTeam(HttpServletRequest request, Model model) {
 		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
-		System.out.println(mIdx);
-		Enumeration e = request.getParameterNames();
-		int tIdx = service.CreTeam(request, e, mIdx);
+		String tName = request.getParameter("tName");
+		int tIdx = service.CreTeam(mIdx, tName);
 		model.addAttribute("mIdx", mIdx);
 		model.addAttribute("tIdx", tIdx);
 		return "team/TeamOK";
 	}
 	
+	//-------------------- 팀 이름 수정 --------------------
 	@RequestMapping(value = "/UpTeamPg.do")
 	public String UpTeamPg(@RequestParam("mIdx") int mIdx, @RequestParam("tName") String tName, @RequestParam("tIdx") int tIdx, Model model) {
 		model.addAttribute("mIdx", mIdx);
@@ -52,6 +51,7 @@ public class TeamController {
 		return "team/TeamOK";
 	}
 	
+	//-------------------- 팀원 초대 --------------------
 	@RequestMapping(value = "/callMemPg.do")
 	public String callMemPg(@RequestParam("mIdx") int mIdx, @RequestParam("tIdx") int tIdx, Model model) {
 		model.addAttribute("mIdx", mIdx);
@@ -66,6 +66,44 @@ public class TeamController {
 		service.callMem(tIdx, mIdx, mId);
 		model.addAttribute("mIdx", mIdx);
 		model.addAttribute("tIdx", tIdx);
+		return "team/TeamOK";
+	}
+	
+	//-------------------- 초대 수락/거절 --------------------
+	@RequestMapping(value="/confrim.do")
+	public String confrim(HttpServletRequest request, Model model) {
+		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
+		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
+		int ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
+		int answer = 1;
+		service.confrim(tIdx, mIdx, answer);
+		model.addAttribute("mIdx", mIdx);
+		model.addAttribute("tIdx", ptIdx);
+		return "team/TeamOK";
+	}
+	@RequestMapping(value="/noConfrim.do")
+	public String noConfrim(HttpServletRequest request, Model model) {
+		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
+		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
+		int ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
+		int answer = 2;
+		service.confrim(tIdx, mIdx, answer);
+		model.addAttribute("mIdx", mIdx);
+		model.addAttribute("tIdx", ptIdx);
+		return "team/TeamOK";
+	}
+	
+	//-------------------- 팀 나가기 --------------------
+	@RequestMapping(value="/escape.do")
+	public String escapeTeam(HttpServletRequest request, Model model) {
+		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
+		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
+		int ptIdx = service.escapeTeam(tIdx, mIdx);
+		model.addAttribute("mIdx", mIdx);
+		model.addAttribute("tIdx", ptIdx);
+		if(ptIdx==0) {
+			return "team/TeamInitialize";
+		}
 		return "team/TeamOK";
 	}
 	

@@ -61,9 +61,12 @@ public class MainDPService {
 		}
 	}
 
-	public List<String> callConfrim(int mIdx) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TeamDTO> callConfrim(int mIdx) {
+		return dao.callConfrim(mIdx);
+	}
+
+	public int LastTeamDel(int mIdx, int tIdx) {
+		return dao.LastTeamDel(mIdx);
 	}
 
 }

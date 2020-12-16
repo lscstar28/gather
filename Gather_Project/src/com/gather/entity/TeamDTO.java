@@ -8,7 +8,7 @@ public class TeamDTO {
 	public TeamDTO() {
 		super();
 	}
-	
+
 	public TeamDTO(int rn, int mIdx, int tIdx, String tName) {
 		super();
 		this.rn = rn;

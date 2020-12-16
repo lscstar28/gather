@@ -3,7 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="my.team-mapping">
-<!-- CreTeam start-->
+
+<!-- 팀만들기 Start -->
 	<insert id="creTeam" parameterType="TeamDTO">
 		<![CDATA[
 			INSERT INTO TEAM VALUES(SQ_TIDX.NEXTVAL, #{tName})
@@ -14,25 +15,67 @@
 			INSERT INTO MY_T VALUES(#{mIdx}, (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'))
 		]]>
 	</insert>
-	<insert id="calling" parameterType="java.lang.String">
+	<select id="getMyTCount" resultType="java.lang.Integer" >
 		<![CDATA[
- 			INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'))
+			SELECT COUNT(*) FROM MY_T WHERE m_idx=#{mIdx}
 		]]>
-	</insert>
-	<insert id="addCalling" parameterType="CallingDTO">
-		<![CDATA[
- 			INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), #{tIdx})
-		]]>
-	</insert>
-	<select id="getTIdx" resultType="java.lang.Integer">
+	</select>
+	<select id="getTIdx" resultType="java.lang.Integer" >
 		<![CDATA[
 			SELECT T_IDX FROM MY_T WHERE T_IDX=(SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX')
 		]]>
 	</select>
+<!-- 팀만들기 End -->
+
+<!-- 팀이름 수정하기 Start -->
 	<update id="UpTeamName" parameterType="TeamDTO">
 		<![CDATA[
 			update TEAM set t_name=#{tName} where t_Idx=#{tIdx}
 		]]>
 	</update>
-<!-- CreTeam end -->
+<!-- 팀이름 수정하기 End -->
+
+<!-- 팀원 초대하기 Start -->
+	<select id="checkCall" parameterType="CallingDTO" resultType="java.lang.Integer">
+		<![CDATA[
+ 			SELECT T_IDX FROM CALL WHERE M_IDX=(SELECT M_IDX FROM MEMBER WHERE ID=#{mId}) AND T_IDX=#{tIdx}
+		]]>
+	</select>
+	<select id="checkMem" parameterType="CallingDTO" resultType="java.lang.Integer">
+		<![CDATA[
+ 			SELECT T_IDX FROM MY_T WHERE M_IDX=(SELECT M_IDX FROM MEMBER WHERE ID=#{mId}) AND T_IDX=#{tIdx}
+		]]>
+	</select>
+	<insert id="addCalling" parameterType="CallingDTO">
+		<![CDATA[
+ 			INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), #{tIdx})
+		]]>
+	</insert>
+<!-- 팀원 초대하기 End -->	
+	
+<!-- 초대 응답하기 Start -->	
+	<delete id="deleteCall" parameterType="TeamDTO">
+		<![CDATA[
+			DELETE FROM CAll WHERE t_idx=#{tIdx} and m_idx=#{mIdx}
+		]]>
+	</delete>
+	<insert id="callAnswerYes" parameterType="TeamDTO">
+		<![CDATA[	
+			INSERT INTO MY_T(T_IDX, M_IDX) VALUES(#{tIdx}, #{mIdx})
+		]]>
+	</insert>
+<!-- 초대 응답하기  End -->
+
+<!-- 팀 탈퇴하기 Start -->	
+	<delete id="escapeTeam" parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM MY_T WHERE t_idx=#{tIdx} and m_idx=#{mIdx}
+		]]>
+	</delete>
+	<select id="backMyTeam" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
+		<![CDATA[
+			select t_idx from(SELECT ROWNUM rn, A.* FROM(SELECT T_IDX FROM MY_T WHERE M_IDX=#{mIdx})A) where rn=1
+		]]>
+	</select>
+<!-- 팀 탈퇴하기  End -->
 </mapper>

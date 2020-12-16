@@ -355,7 +355,22 @@ SELECT * FROM WORK;
 SELECT * FROM CALL;
 SELECT * FROM L_TEAM;
 INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID='admin'), 1); 
-			
+
+select t_idx from call where m_idx=1 group by t_idx;
+
+select team.t_idx, t_name,m_idx 
+from team,call 
+where team.t_idx = call.t_idx and m_idx=1 
+group by team.t_idx,t_name,m_idx;
+
+delete from L_TEAM where M_IDX=1;
+delete from MY_T where M_IDX=3;
+delete from L_TEAM where M_IDX=1;
+
+update L_TEAM set t_idx=1 where m_Idx=1;
+update L_TEAM set t_idx=6 where m_Idx=2;
+update L_TEAM set t_idx=1 where m_Idx=3;
+
 INSERT INTO TEAM VALUES(SQ_TIDX.NEXTVAL, '여덟팀');
 INSERT INTO MY_T VALUES(1, (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'));
 update L_TEAM set t_IDx=1 where m_idx=3;
@@ -378,7 +393,16 @@ ORDER BY TIDX DESC
 ) A)
 WHERE TIDX = (SELECT T_IDX FROM L_TEAM WHERE M_IDX=2)
 			
+INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), #{tIdx})
+select * from MY_T where m_idx=1 and t_idx=3;
+select * from call where m_idx=1 and t_idx=3;
 
+
+INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID='admin'), 1)
+SELECT * FROM MY_T WHERE M_IDX=1 AND T_IDX=1;
+SELECT * FROM CALL WHERE M_IDX=1 AND T_IDX=1;
+
+update L_TEAM set t_idx=1 where m_idx=1;
 update L_TEAM set t_idx=3 where m_idx=2;
 update L_TEAM set t_idx=1 where m_idx=3;
 
@@ -427,7 +451,12 @@ CREATE SEQUENCE SQ_DIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 drop sequence SQ_MIDX;
 select * from seq
 
+select team.t_idx, t_name
+from team,call 
+where team.t_idx = call.t_idx and m_idx=3
+group by team.t_idx,t_name
 
+select t_idx from(SELECT ROWNUM rn, A.* FROM(SELECT T_IDX FROM MY_T WHERE M_IDX=1)A) where rn=4;
 
->>>>>>> branch 'master' of https://github.com/lscstar28/gather.git
+SELECT T_IDX FROM MY_T WHERE M_IDX=1 and ROWNUM=3
 

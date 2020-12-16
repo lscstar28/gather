@@ -1,10 +1,7 @@
 package com.team.model;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,28 +12,18 @@ import com.gather.entity.TeamDTO;
 @Service
 public class TeamService {
 	@Autowired
-	TeamDAO dao;
+	private TeamDAO dao;
 	
-	public int CreTeam(HttpServletRequest request, Enumeration e, int mIdx) {
-		String tName =null;
-		List<String> mList = new ArrayList<String>();
-		while(e.hasMoreElements()) {
-			String name = (String) e.nextElement();
-			String[] values = request.getParameterValues(name);		
-			if(name.equals("tName")) {
-				tName = values[0];
-			}else {
-				for (String string : values) {
-					mList.add(string);
-				}
-			}
-		}
-		TeamDTO dto = new TeamDTO();
-		dto.setmIdx(mIdx);
-		dto.settName(tName);
-		return dao.CreTeam(dto, mList);
+	//-------------------- 팀 만들기 --------------------
+	public int CreTeam(int mIdx, String tName) {
+		int n = dao.CreTeam(mIdx, tName);
+		return n;
+	}
+	public void CreLT(int mIdx, String tName) {
+		dao.CreLT(mIdx, tName);
 	}
 
+	//-------------------- 팀 이름 수정 --------------------
 	public void UpTeam(int tIdx, int mIdx, String tName) {
 		TeamDTO dto = new TeamDTO();
 		dto.setmIdx(mIdx);
@@ -45,9 +32,37 @@ public class TeamService {
 		dao.UpTeamName(dto);
 	}
 
+	//-------------------- 팀원 초대 --------------------
 	public void callMem(int tIdx, int mIdx, String mId) {
 		CallingDTO dto = new CallingDTO(tIdx, mId);
-		dao.callMem(dto);
+		int n1 = dao.checkCall(dto);
+		int n2 = dao.checkMem(dto);
+		if(n1+n2==0) {
+			dao.callMem(dto);
+		}
 	}
+
+
+	//-------------------- 초대 수락/거절 --------------------
+	public void confrim(int tIdx, int mIdx, int answer) {
+		TeamDTO dto = new TeamDTO();
+		dto.setmIdx(mIdx);
+		dto.settIdx(tIdx);
+		if(answer == 1) {
+			dao.confrim(dto);
+		}else {
+			dao.noConfrim(dto);
+		}
+	}
+
+	
+	public int escapeTeam(int tIdx, int mIdx) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("tIdx", tIdx);
+		map.put("mIdx", mIdx);
+		dao.escapeTeam(map);
+		return dao.backMyTeam(mIdx);
+	}
+
 
 }
