@@ -54,9 +54,14 @@ public class MainDPDAO {
 		return factory.openSession().selectOne("my.gather-mapping.getRn", mIdx);
 	}
 
-	public void LastTeam(Map<String, Integer> mt) {
+	public int LastTeam(Map<String, Integer> mt) {
 		System.out.println(mt.get("mIdx") + ", " + mt.get("tIdx"));
-		factory.openSession().selectOne("my.gather-mapping.LastTeam", mt);
+		return factory.openSession().update("my.gather-mapping.LastTeam", mt);
+	}
+
+	public int creLastTeam(Map<String, Integer> mt) {
+		// TODO Auto-generated method stub
+		return factory.openSession().insert("my.gather-mapping.creLastTeam", mt);
 	}
 
 }

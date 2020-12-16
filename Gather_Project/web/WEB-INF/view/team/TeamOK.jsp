@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="button" value="기본화면으로" onclick="location.href='mainDP.do?mIdx=1'"><br>
-<a href="/gather/join.do">회원가입</a><br>
-<a href="/gather/login.do">로그인창으로</a>
+OK
+<input type="button" value="돌아가기" onclick="location.href='LastTeam.do?mIdx=${mIdx}&tIdx=${tIdx}'">
 </body>
 </html>

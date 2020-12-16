@@ -48,11 +48,22 @@ public class MainDPService {
 		return  dao.getRn(mIdx);
 	}
 
-	public void LastTeam(int mIdx, int tIdx) {
+	public int LastTeam(int mIdx, int tIdx) {
 		Map<String, Integer> mt = new HashMap<String, Integer>();
 		mt.put("mIdx", mIdx);
 		mt.put("tIdx", tIdx);
-		dao.LastTeam(mt);
+		int n = dao.LastTeam(mt);
+		System.out.println("service" + n);
+		if(n==1) {
+			return n;
+		}else {
+			return dao.creLastTeam(mt);
+		}
+	}
+
+	public List<String> callConfrim(int mIdx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

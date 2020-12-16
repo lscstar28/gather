@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.team-mapping">
+<!-- CreTeam start-->
+	<insert id="creTeam" parameterType="TeamDTO">
+		<![CDATA[
+			INSERT INTO TEAM VALUES(SQ_TIDX.NEXTVAL, #{tName})
+		]]>
+	</insert>
+	<insert id="creMyT" parameterType="TeamDTO">
+		<![CDATA[
+			INSERT INTO MY_T VALUES(#{mIdx}, (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'))
+		]]>
+	</insert>
+	<insert id="calling" parameterType="java.lang.String">
+		<![CDATA[
+ 			INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'))
+		]]>
+	</insert>
+	<insert id="addCalling" parameterType="CallingDTO">
+		<![CDATA[
+ 			INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), #{tIdx})
+		]]>
+	</insert>
+	<select id="getTIdx" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT T_IDX FROM MY_T WHERE T_IDX=(SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX')
+		]]>
+	</select>
+	<update id="UpTeamName" parameterType="TeamDTO">
+		<![CDATA[
+			update TEAM set t_name=#{tName} where t_Idx=#{tIdx}
+		]]>
+	</update>
+<!-- CreTeam end -->
+</mapper>

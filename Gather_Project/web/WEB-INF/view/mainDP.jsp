@@ -19,12 +19,13 @@
 				<c:forEach items="${list}" var="ob">
 					<li><a href ="LastTeam.do?tIdx=${ob.tIdx}&mIdx=${mIdx}">${ob.tIdx} : ${ob.tName}</a></li>
 				</c:forEach>
-					<li><a href='CreTeam.do?mIdx=${mIdx}'>팀 만들기</a></li>
+					<li><a href='CreTeamPg.do?mIdx=${mIdx}'>팀 만들기</a></li>
 				</ul>
 				<!-- body(team) -->
+				<div class=1>
 				<h3>팀 소개</h3>
 				팀 번호 : ${tIdx}
-				팀 이름 : ${tname} <input type="button" value="수정"><br>
+				팀 이름 : ${tName} <input type="button" value="수정" onclick="location.href='UpTeamPg.do?mIdx=${mIdx}&tName=${tName}&tIdx=${tIdx}'"><br>
 				-----팀원 -----<br>
 				<c:forEach items="${mlist}" var="ob">
 					${ob}<br>
@@ -34,9 +35,10 @@
 					<c:forEach items="${clist}" var="ob">
 		 				${ob}<br>
 					</c:forEach>
-					<input type="button" value="추가하기"><br>
+					<input type="button" value="추가하기" onclick="location.href='callMemPg.do?mIdx=${mIdx}&tIdx=${tIdx}'"><br>
 				</c:if>
-				
+				</div>
+				<div class=2>
 				<h3>기획</h3>
 				<c:if test="${!empty des.dName}">
 					기획 주제 : ${des.dName}<br>
@@ -54,7 +56,8 @@
 				<c:if test="${empty des.dName}">
 					<a href='#'>기획 만들기</a>
 				</c:if>
-				
+				</div>
+				<div class=3>
 				<h3>업무/진행</h3>	
 				<c:if test="${!empty wlist}">
 					-----업무 -----<br>
@@ -81,10 +84,11 @@
 						${ob.work} / ${ob.wSDate} ~ ${ob.wEDate}<br>
 					</c:forEach>
 				</c:if>
-
+				</div>
 			</c:if>
 		<c:if test="${empty wlist}">
 			<a href='#'>업무/진행 만들기</a>
+			
 		</c:if>
 		<c:if test="${empty list}">
 			<ul style="list-style: none;">

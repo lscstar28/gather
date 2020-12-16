@@ -65,4 +65,9 @@
 			UPDATE L_TEAM SET T_IDX=#{tIdx} WHERE M_IDX=#{mIdx} 
 		]]>
 	</select>
+	<insert id="creLastTeam" parameterType="HashMap">
+		<![CDATA[		
+			insert into L_TEAM values(#{mIdx}, #{tIdx})
+		]]>
+	</insert>
 </mapper>
