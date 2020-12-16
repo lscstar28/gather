@@ -8,12 +8,15 @@
 		<typeAlias type="com.gather.entity.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.gather.entity.DesignDTO" alias="DesignDTO"/>
 		<typeAlias type="com.gather.entity.WorkDTO" alias="WorkDTO"/>
+		<typeAlias type="com.gather.entity.ConferenceDTO" alias="ConferenceDTO"/>
 	</typeAliases>
 	<!-- 쿼리문 -->
 	<mappers>
 		<mapper resource="mybatis/gather-mapping.xml"/>
 		<mapper resource="mybatis/member-mapping.xml"/>  <!-- 동재꺼 -->
 		<mapper resource="mybatis/work-mapping.xml"/>  <!-- work -->
+		<mapper resource="mybatis/conference-mapping.xml"/>  <!-- conference -->
+		<mapper resource="mybatis/design-mapping.xml"/>  <!-- design -->
 	</mappers>
 	
 	

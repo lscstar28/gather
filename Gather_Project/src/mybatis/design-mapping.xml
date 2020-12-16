@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.designMapper">
+	
+	<select id="designList" parameterType="java.lang.Integer" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM DESIGN WHERE T_IDX=#{t_idx}
+		]]>
+	</select>
+	
+	<insert id="designInsert" parameterType="DesignDTO">
+		<![CDATA[
+			INSERT INTO DESIGN(D_IDX, D_NAME, D_PURP, D_CON, T_IDX) 
+			VALUES(SQ_DIDX.NEXTVAL, #{d_Name}, #{d_Purp}, #{d_Con}, #{t_idx})
+		]]>
+	</insert>
+	
+</mapper>
+
+

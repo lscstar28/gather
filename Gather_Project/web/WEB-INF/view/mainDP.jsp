@@ -48,7 +48,7 @@
 					<input type="button" value="추가하기"><br>
 				</c:if>
 				<c:if test="${empty des.dName}">
-					<a href='#'>기획 만들기</a>
+					<a href='design.do?tIdx=1'>기획 리스트보기</a>
 				</c:if>
 				<h3>업무/진행</h3>	
 				<c:if test="${!empty wlist}">

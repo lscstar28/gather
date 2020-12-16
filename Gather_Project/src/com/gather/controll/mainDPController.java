@@ -43,15 +43,7 @@ public class mainDPController {
 			model.addAttribute("mlist", mlist);
 			model.addAttribute("clist", clist);
 			model.addAttribute("tIdx", tIdx);
-			//기획
-			DesignDTO des = service.getDesign(tIdx);					//기획 객체
-			if(des != null) {
-				List<String> purp = service.designPurpose(des.getdIdx());	//기획 목적
-				List<String> dCon = service.designContent(des.getdIdx());	//기획 내용(기능)
-				model.addAttribute("des", des);
-				model.addAttribute("purp", purp);
-				model.addAttribute("dCon", dCon);
-			}
+			
 			//진행
 			List<WorkDTO> wlist = service.workList(tIdx);				//진행 객체 리스트
 			if(wlist.size() != 0) {

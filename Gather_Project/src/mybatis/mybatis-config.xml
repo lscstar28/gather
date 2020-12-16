@@ -16,6 +16,7 @@
 		<mapper resource="mybatis/member-mapping.xml"/>  <!-- 동재꺼 -->
 		<mapper resource="mybatis/work-mapping.xml"/>  <!-- work -->
 		<mapper resource="mybatis/conference-mapping.xml"/>  <!-- conference -->
+		<mapper resource="mybatis/design-mapping.xml"/>  <!-- design -->
 	</mappers>
 	
 	
