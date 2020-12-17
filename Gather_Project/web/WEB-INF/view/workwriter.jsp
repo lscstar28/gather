@@ -8,7 +8,7 @@
 </head>
 <body>
 업무 추가
- <form id="workWriter" method="psot" action="workWriter.do">
+ <form id="workWriter" method="post" action="workWriter.do">
  		<input type="hidden" id="teamIdx" name="tIdx" value="${tIdx}"><br>
  		업무 : <input type="text" id="workTitle" name="workTit"><br>
  		담당자 : <input type="text" id="workManager" name="workMg"><br>

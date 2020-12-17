@@ -35,6 +35,24 @@
 		]]>
 	</update>
 	
+	<delete id="workDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE WORK WHERE W_IDX = #{widx} 
+		]]>
+	</delete>
+	
+	<select id="workModify" parameterType="java.lang.Integer" resultType="WorkDTO">
+		<![CDATA[
+			SELECT * FROM WORK WHERE W_IDX=#{widx}
+		]]>
+	</select>
+	
+	<update id="workUpdate" parameterType="WorkDTO">
+		<![CDATA[
+			UPDATE WORK SET WORK = #{work}, W_MEM = #{w_Mem} WHERE W_IDX = #{w_Idx} 
+		]]>
+	</update>
+	
 </mapper>
 
 

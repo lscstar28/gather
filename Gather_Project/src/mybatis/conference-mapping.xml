@@ -12,9 +12,28 @@
 	
 	<insert id="conferenceInsert" parameterType="ConferenceDTO">
 		<![CDATA[
-			INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, #{c_title}, #{c_content}, SYSDATE, #{t_idx})
+			INSERT INTO CONFERENCE (C_IDX, C_TITLE, C_CONTENT, C_DATE, T_IDX) 
+			VALUES(SQ_CIDX.nextval, #{c_title}, #{c_content}, SYSDATE, #{t_idx})
 		]]>
 	</insert>
+	
+	<delete id="conferenceDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE CONFERENCE WHERE C_IDX = #{cidx} 
+		]]>
+	</delete>
+	
+	<select id="conferenceModify" parameterType="java.lang.Integer" resultType="ConferenceDTO">
+		<![CDATA[
+			SELECT * FROM CONFERENCE WHERE C_IDX=#{C_idx}
+		]]>
+	</select>
+	
+	<update id="conferenceUpdate" parameterType="ConferenceDTO">
+		<![CDATA[
+			UPDATE CONFERENCE SET C_TITLE = #{c_title}, C_CONTENT = #{c_content} WHERE C_IDX = #{c_Idx} 
+		]]>
+	</update>
 	
 </mapper>
 

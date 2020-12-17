@@ -40,6 +40,8 @@
 			업무 종료 날짜: ${ob.w_EDate}<br>
 			업무 담당자: ${ob.w_Mem}<br>
 			업무 팀 번호: ${ob.t_idx}<br>
+			<input type="button" value="삭제하기" onclick="location.href='workDelete.do?wIdx='+'${ob.w_Idx}'"><br>
+			<input type="button" value="수정하기" onclick="location.href='workModify.do?wIdx='+'${ob.w_Idx}'"><br>
 		</c:forEach>	
 	</c:if>
 </body>

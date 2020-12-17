@@ -18,6 +18,8 @@
 			회의 제목: ${ob.c_title}<br>
 			회의 내용: ${ob.c_content}<br>
 			회의 작성날짜: ${ob.c_date}<br>
+			<input type="button" value="삭제하기" onclick="location.href='conferenceDelete.do?cIdx='+'${ob.c_Idx}'">
+			<input type="button" value="수정하기" onclick="location.href='conferenceModify.do?cIdx='+'${ob.c_Idx}'"><br>
 		</c:forEach>
 	</c:if>
 	<input type="button" value="회의 추가하기" onclick="location.href='conferenceInsert.do?tIdx=1'"><br>

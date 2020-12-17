@@ -47,12 +47,41 @@ public class workController {
 	
 	// 업무상태 변경하기
 	@RequestMapping(value = "/workStateChange.do")
-	public String workStateChange(@RequestParam("widx") int widx, @RequestParam("wproc") int wproc, Model model) {
+	public String workStateChange(@RequestParam("widx") int widx, @RequestParam("wproc") int wproc) {
 		System.out.println("widx: "+widx);
 		System.out.println("wproc: "+wproc);
 		service.workStateChange(widx,wproc);
 		System.out.println("업데이트");
 		return "writeOK";
 	}
+	
+	// 업무 삭제하기
+		@RequestMapping(value = "/workDelete.do")
+		public String workDelete(@RequestParam("wIdx") int widx) {
+			System.out.println("widx: "+widx);
+			service.workDelete(widx);
+			return "writeOK";
+		}
+		
+	// 업무 수정하기 위한 write 가기
+		@RequestMapping(value = "/workModify.do")
+		public String conferenceModify(@RequestParam("wIdx") int widx, Model model) {
+			WorkDTO entity = new WorkDTO();
+			entity = service.workModidy(widx);
+			model.addAttribute("entity",entity);
+			return "workModify";
+		}
+		
+	// 업무 수정하기
+		@RequestMapping(value = "/workUpdate.do")
+		public String CFModify(HttpServletRequest request, Model model) {
+			
+			WorkDTO entity = new WorkDTO();
+			entity.setW_Idx(Integer.parseInt(request.getParameter("wIdx")));
+			entity.setWork(request.getParameter("workTit"));
+			entity.setW_Mem(request.getParameter("workMg"));
+			service.workUpdate(entity);
+			return "writeOK";
+		}	
 	
 }
