@@ -4,7 +4,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.gather.entity.MemberDTO" alias="MemberDTO"/>  <!-- 안되면 alias="ob" -->
+		<typeAlias type="com.gather.entity.MemberDTO" alias="MemberDTO"/> 
 		<typeAlias type="com.gather.entity.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.gather.entity.DesignDTO" alias="DesignDTO"/>
 		<typeAlias type="com.gather.entity.WorkDTO" alias="WorkDTO"/>

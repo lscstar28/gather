@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gather.entity.DesignDTO;
+import com.gather.entity.WorkDTO;
 import com.mainDP.model.DesignService;
 
 
@@ -45,8 +46,38 @@ public class designController {
 		entity.setD_Name(request.getParameter("d_name"));
 		entity.setD_Purp(request.getParameter("d_purp"));
 		entity.setD_Con(request.getParameter("d_con"));
-		
 		service.designInsert(entity);
 		return "designOK";
 	}
+	
+	// 기획 삭제하기
+	@RequestMapping(value = "/designDelete.do")
+	public String designDelete(@RequestParam("dIdx") int didx) {
+		System.out.println("didx: "+didx);
+		service.designDelete(didx);
+		return "designOK";
+	}
+	
+	
+	// 기획 수정 페이지로 이동
+	@RequestMapping(value = "/designModify.do")
+	public String movedesignModify(@RequestParam("dIdx") int didx, Model model) {
+		DesignDTO entity = new DesignDTO();
+		entity = service.designModidy(didx);
+		model.addAttribute("entity",entity);
+		return "designModify";
+	}
+	
+	// 기획 수정하기
+	@RequestMapping(value = "/designUpdate.do")
+	public String designModify(HttpServletRequest request, Model model) {
+		DesignDTO entity = new DesignDTO();
+		
+		entity.setD_Idx(Integer.parseInt(request.getParameter("dIdx")));
+		entity.setD_Name(request.getParameter("d_name"));
+		entity.setD_Purp(request.getParameter("d_purp"));
+		entity.setD_Con(request.getParameter("d_con"));
+		service.designUpdate(entity);
+		return "designOK";
+	}	
 }

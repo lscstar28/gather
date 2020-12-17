@@ -30,6 +30,8 @@
 			주제: ${ob.d_Name}<br>
 			기획목적: ${ob.d_Purp}<br>
 			기능(내용): ${ob.d_Con}<br>
+			<input type="button" value="삭제하기" onclick="location.href='designDelete.do?dIdx='+'${ob.d_Idx}'"><br>
+			<input type="button" value="수정하기" onclick="location.href='designModify.do?dIdx='+'${ob.d_Idx}'"><br>
 		</c:forEach>
 	</c:if>
 </body>

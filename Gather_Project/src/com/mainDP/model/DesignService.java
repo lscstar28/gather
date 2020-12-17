@@ -20,5 +20,17 @@ public class DesignService {
 	public void designInsert(DesignDTO entity) {
 		dao.designInsert(entity);
 	}
-	
+
+	public void designDelete(int didx) {
+		dao.designDelete(didx);
+	}
+
+	public DesignDTO designModidy(int didx) {
+		return dao.designModidy(didx);
+	}
+
+	public void designUpdate(DesignDTO entity) {
+		dao.designUpdate(entity);
+	}
+
 }

@@ -17,6 +17,24 @@
 		]]>
 	</insert>
 	
+	<delete id="designDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE DESIGN WHERE D_IDX = #{didx} 
+		]]>
+	</delete>
+	
+	<select id="designModify" parameterType="java.lang.Integer" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM DESIGN WHERE D_IDX=#{didx}
+		]]>
+	</select>
+	
+	<update id="designUpdate" parameterType="DesignDTO">
+		<![CDATA[
+			UPDATE DESIGN SET D_NAME = #{d_Name}, D_PURP = #{d_Purp}, D_CON = #{d_Con} WHERE D_IDX = #{d_Idx} 
+		]]>
+	</update>
+	
 </mapper>
 
 
