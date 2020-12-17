@@ -16,11 +16,8 @@ public class TeamService {
 	
 	//-------------------- 팀 만들기 --------------------
 	public int CreTeam(int mIdx, String tName) {
-		int n = dao.CreTeam(mIdx, tName);
+		int n= dao.CreTeam(mIdx, tName);
 		return n;
-	}
-	public void CreLT(int mIdx, String tName) {
-		dao.CreLT(mIdx, tName);
 	}
 
 	//-------------------- 팀 이름 수정 --------------------
@@ -61,7 +58,7 @@ public class TeamService {
 		map.put("tIdx", tIdx);
 		map.put("mIdx", mIdx);
 		dao.escapeTeam(map);
-		return dao.backMyTeam(mIdx);
+		return dao.backMyTeam(mIdx);		//L_TEAM 수정하기
 	}
 
 

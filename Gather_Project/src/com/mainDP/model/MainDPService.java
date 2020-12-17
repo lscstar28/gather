@@ -16,14 +16,27 @@ public class MainDPService {
 	@Autowired
 	private MainDPDAO dao;
 	
+	// ========== 팀 리스트 불러오기 ==========
 	public List<TeamDTO> listTeam(int mIdx) {
 		return dao.listTeam(mIdx);
 	}
+	
+	// ========== 마지막에 수정했던 팀의 tIdx, tName 가져오기 ==========	
+	public TeamDTO getSelectTeam(int mIdx) {
+		return dao.getSelectTeam(mIdx);
+	}
 
+	// ========== 팀에 소속된 맴버 리스트 가져오기 ==========	
 	public List<String> TeamMember(int lastTIdx) {
 		return dao.TeamMember(lastTIdx);
 	}
 
+	// ========== 초대 요청 대기중인 맴버 리스트 가져오기 ==========	
+	public List<String> CallMember(int tIdx) {
+		return dao.CallMember(tIdx);
+	}
+
+	// ========== 팀 기획 정보(기획 번호, 기획 주제) 가져오기 ==========	
 	public DesignDTO getDesign(int tIdx) {
 		return dao.getDesign(tIdx);
 	}
@@ -40,13 +53,8 @@ public class MainDPService {
 		return dao.workList(tIdx);
 	}
 
-	public List<String> CallMember(int tIdx) {
-		return dao.CallMember(tIdx);
-	}
 
-	public int getRn(int mIdx) {
-		return  dao.getRn(mIdx);
-	}
+
 
 	public int LastTeam(int mIdx, int tIdx) {
 		Map<String, Integer> mt = new HashMap<String, Integer>();

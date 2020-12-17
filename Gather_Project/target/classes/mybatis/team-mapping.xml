@@ -5,21 +5,26 @@
 <mapper namespace="my.team-mapping">
 
 <!-- 팀만들기 Start -->
-	<insert id="creTeam" parameterType="TeamDTO">
+	<insert id="creTeam" parameterType="java.lang.String">
 		<![CDATA[
 			INSERT INTO TEAM VALUES(SQ_TIDX.NEXTVAL, #{tName})
 		]]>
 	</insert>
-	<insert id="creMyT" parameterType="TeamDTO">
+	<insert id="creMyT" parameterType="java.lang.Integer">
 		<![CDATA[
 			INSERT INTO MY_T VALUES(#{mIdx}, (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'))
 		]]>
 	</insert>
-	<select id="getMyTCount" resultType="java.lang.Integer" >
+	<select id="countMyT" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
 		<![CDATA[
 			SELECT COUNT(*) FROM MY_T WHERE m_idx=#{mIdx}
 		]]>
 	</select>
+	<insert id="myLastTeam" parameterType="java.lang.Integer">
+		<![CDATA[
+			INSERT INTO L_TEAM VALUES(#{mIdx}, (SELECT T_IDX FROM MY_T WHERE M_IDX=#{mIdx}))
+		]]>
+	</insert>
 	<select id="getTIdx" resultType="java.lang.Integer" >
 		<![CDATA[
 			SELECT T_IDX FROM MY_T WHERE T_IDX=(SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX')
@@ -71,6 +76,16 @@
 		<![CDATA[
 			DELETE FROM MY_T WHERE t_idx=#{tIdx} and m_idx=#{mIdx}
 		]]>
+	</delete>
+	<select id="getTeamMember" parameterType="hashMap" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*)	FROM MY_T WHERE T_IDX=#{tIdx}
+		]]>
+	</select>
+	<delete id="deleteTeam" parameterType="java.lang.Integer">
+		<![CDATA[
+			
+			]]>
 	</delete>
 	<select id="backMyTeam" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
 		<![CDATA[

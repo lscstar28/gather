@@ -20,13 +20,15 @@ public class TeamDAO {
 		SqlSession session=factory.openSession();
 		session.insert("my.team-mapping.creTeam", tName);
 		session.insert("my.team-mapping.creMyT", mIdx);
+		int isOne = session.selectOne("my.team-mapping.countMyT", mIdx);
 		int n = session.selectOne("my.team-mapping.getTIdx");
+		if(isOne == 1) {
+			session.insert("my.team-mapping.myLastTeam", mIdx);
+		}
 		session.close();
 		return n;
 	}
-	public int CreLT(int mIdx, String tName) {
-		return 0;
-	}
+
 	/* 팀 이름 수정하기 */
 	public void UpTeamName(TeamDTO dto) {
 		SqlSession session=factory.openSession();
@@ -77,8 +79,15 @@ public class TeamDAO {
 	/* 팀 탈퇴하기 */
 	public void escapeTeam(Map<String, Integer> map) {
 		SqlSession session=factory.openSession();
-		session.delete("my.team-mapping.escapeTeam", map);
+		session.delete("my.team-mapping.escapeTeam", map);				//MY_T에서 팀과 회원의 연동 끊기
 		session.close();
+	}
+	
+	//관리자가 주기적으로 맴버가 비어있는 팀들을 지울 때 사용
+	public void deleteTeam(int tIdx) {
+		SqlSession session=factory.openSession();
+		session.close();
+		
 	}
 	public int backMyTeam(int mIdx) {
 		SqlSession session=factory.openSession();
@@ -91,6 +100,8 @@ public class TeamDAO {
 		session.close();
 		return n;
 	}
+	
+	
 	
 
 }
