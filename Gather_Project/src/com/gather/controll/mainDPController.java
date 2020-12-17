@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.MemberDTO;
 import com.gather.entity.TeamDTO;
-import com.gather.entity.WorkDTO;
+import com.gather.entity.WorkDTOR;
 import com.mainDP.model.MainDPService;
 
 @Controller
@@ -68,7 +68,7 @@ public class mainDPController {
 			}
 			
 			//진행
-			List<WorkDTO> wlist = service.workList(tIdx);				//진행 객체 리스트
+			List<WorkDTOR> wlist = service.workList(tIdx);				//진행 객체 리스트
 			if(wlist.size() != 0) {
 				//==========	업무/진행이 비어있지 않을 시 업무/진행 정보 보내기	==========
 				model.addAttribute("wlist", wlist);
@@ -81,7 +81,7 @@ public class mainDPController {
 	@RequestMapping(value = "/LastTeam.do")
 	public String LastTeam(@RequestParam("mIdx") int mIdx, @RequestParam("tIdx") int tIdx, Model model) {
 		model.addAttribute("mIdx", mIdx);
-		int n = service.LastTeam(mIdx, tIdx);
+		service.LastTeam(mIdx, tIdx);
 		return "redirect:/mainDP.do";
 	}
 	

@@ -9,6 +9,7 @@
 		<typeAlias type="com.gather.entity.DesignDTO" alias="DesignDTO"/>
 		<typeAlias type="com.gather.entity.DesignDTOR" alias="DesignDTOR"/>
 		<typeAlias type="com.gather.entity.WorkDTO" alias="WorkDTO"/>
+		<typeAlias type="com.gather.entity.WorkDTOR" alias="WorkDTOR"/>
 		<typeAlias type="com.gather.entity.CallingDTO" alias="CallingDTO"/>
 	</typeAliases>
 	
@@ -20,7 +21,8 @@
 		<mapper resource="mybatis/gather-mapping.xml"/>
 		<mapper resource="mybatis/team-mapping.xml"/>	<!-- 성찬은 두개  -->
 		<mapper resource="mybatis/member-mapping.xml"/>  <!-- 동재꺼 -->
-<!-- 		<mapper resource="mybatis/Login-mapping.xml"/>   경동꺼 -->
+		<mapper resource="mybatis/work-mapping.xml"/>  <!-- work -->
+		<mapper resource="mybatis/design-mapping.xml"/>  <!-- design -->
 	</mappers>
 	
 	

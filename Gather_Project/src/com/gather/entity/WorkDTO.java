@@ -1,70 +1,84 @@
 package com.gather.entity;
 
-import oracle.sql.DATE;
 
 public class WorkDTO {
-	private int wIdx;
-	private String work;
-	private int wProc;
-	private String wSDate;
-	private String wEDate;
-	private String wMem;
-	private int tidx;
+	private int w_Idx;			//업무번호
+	private String work;		//업무타이틀
+	private int w_Proc;			//업무 진행도
+	private String w_SDate;		//업무 시작 날짜
+	private String w_EDate;		//업무 완료 날짜
+	private String w_Mem;		//담당자
+	private int t_idx;			//팀번호
+	
 	public WorkDTO() {
 		super();
 	}
-	public WorkDTO(int wIdx, String work, int wProc, String wSDate, String wEDate, String wMem, int tidx) {
+
+	public WorkDTO(int w_Idx, String work, int w_Proc, String w_SDate, String w_EDate, String w_Mem, int t_idx) {
 		super();
-		this.wIdx = wIdx;
+		this.w_Idx = w_Idx;
 		this.work = work;
-		this.wProc = wProc;
-		this.wSDate = wSDate;
-		this.wEDate = wEDate;
-		this.wMem = wMem;
-		this.tidx = tidx;
+		this.w_Proc = w_Proc;
+		this.w_SDate = w_SDate;
+		this.w_EDate = w_EDate;
+		this.w_Mem = w_Mem;
+		this.t_idx = t_idx;
 	}
-	public int getwIdx() {
-		return wIdx;
+
+	public int getW_Idx() {
+		return w_Idx;
 	}
-	public void setwIdx(int wIdx) {
-		this.wIdx = wIdx;
+
+	public void setW_Idx(int w_Idx) {
+		this.w_Idx = w_Idx;
 	}
+
 	public String getWork() {
 		return work;
 	}
+
 	public void setWork(String work) {
 		this.work = work;
 	}
-	public int getwProc() {
-		return wProc;
+
+	public int getW_Proc() {
+		return w_Proc;
 	}
-	public void setwProc(int wProc) {
-		this.wProc = wProc;
+
+	public void setW_Proc(int w_Proc) {
+		this.w_Proc = w_Proc;
 	}
-	public String getwSDate() {
-		return wSDate;
+
+	public String getW_SDate() {
+		return w_SDate;
 	}
-	public void setwSDate(String wSDate) {
-		this.wSDate = wSDate;
+
+	public void setW_SDate(String w_SDate) {
+		this.w_SDate = w_SDate;
 	}
-	public String getwEDate() {
-		return wEDate;
+
+	public String getW_EDate() {
+		return w_EDate;
 	}
-	public void setwEDate(String wEDate) {
-		this.wEDate = wEDate;
+
+	public void setW_EDate(String w_EDate) {
+		this.w_EDate = w_EDate;
 	}
-	public String getwMem() {
-		return wMem;
+
+	public String getW_Mem() {
+		return w_Mem;
 	}
-	public void setwMem(String wMem) {
-		this.wMem = wMem;
+
+	public void setW_Mem(String w_Mem) {
+		this.w_Mem = w_Mem;
 	}
-	public int getTidx() {
-		return tidx;
+
+	public int getT_idx() {
+		return t_idx;
 	}
-	public void setTidx(int tidx) {
-		this.tidx = tidx;
+
+	public void setT_idx(int t_idx) {
+		this.t_idx = t_idx;
 	}
-	
-	
+
 }

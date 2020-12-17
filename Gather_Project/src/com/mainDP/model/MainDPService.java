@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
+import com.gather.entity.WorkDTOR;
 
 @Service
 public class MainDPService {
@@ -49,12 +50,9 @@ public class MainDPService {
 		return dao.designContent(dIdx);
 	}
 
-	public List<WorkDTO> workList(int tIdx) {
+	public List<WorkDTOR> workList(int tIdx) {
 		return dao.workList(tIdx);
 	}
-
-
-
 
 	public int LastTeam(int mIdx, int tIdx) {
 		Map<String, Integer> mt = new HashMap<String, Integer>();

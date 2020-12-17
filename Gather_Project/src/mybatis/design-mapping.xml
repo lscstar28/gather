@@ -12,8 +12,8 @@
 	
 	<insert id="designInsert" parameterType="DesignDTO">
 		<![CDATA[
-			INSERT INTO DESIGN(D_IDX, D_NAME, D_PURP, D_CON, T_IDX) 
-			VALUES(SQ_DIDX.NEXTVAL, #{d_Name}, #{d_Purp}, #{d_Con}, #{t_idx})
+			INSERT INTO DESIGN(D_IDX, D_NAME, T_IDX) 
+			VALUES(SQ_DIDX.NEXTVAL, #{d_Name}, #{t_idx})
 		]]>
 	</insert>
 	

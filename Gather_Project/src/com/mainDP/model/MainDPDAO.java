@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
+import com.gather.entity.WorkDTOR;
 
 @Repository("mainDPDAO")
 public class MainDPDAO {
@@ -133,9 +134,9 @@ session.close();
 		return list;
 	}
 
-	public List<WorkDTO> workList(int tIdx) {
+	public List<WorkDTOR> workList(int tIdx) {
 		SqlSession session = factory.openSession();
-		List<WorkDTO> list = null;
+		List<WorkDTOR> list = null;
 		synchronized (factory) {
 			try {
 				list = session.selectList("my.gather-mapping.getWorkList", tIdx);

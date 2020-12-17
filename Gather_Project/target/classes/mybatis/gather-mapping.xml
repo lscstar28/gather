@@ -56,7 +56,7 @@
 			SELECT D_CON FROM D_CON WHERE D_IDX=#{dIdx}
 		]]>
 	</select>
-	<select id="getWorkList" parameterType="java.lang.Integer" resultType="WorkDTO">
+	<select id="getWorkList" parameterType="java.lang.Integer" resultType="WorkDTOR">
 		<![CDATA[
 			SELECT 
 			W_IDX AS WIDX, WORK, W_PROC AS WPROC, TO_CHAR(W_SDATE, 'yyyy-mm-dd' )AS WSDATE,

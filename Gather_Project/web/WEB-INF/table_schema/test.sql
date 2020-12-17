@@ -24,6 +24,8 @@
 			select count(*)
 			from MY_T where t_idx=1;
 			
+			select * from work;
+			
 			SELECT COUNT(*) FROM MY_T WHERE m_idx=1
 			
 			

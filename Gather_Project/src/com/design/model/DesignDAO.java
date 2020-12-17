@@ -1,4 +1,4 @@
-package com.design.moel;
+package com.design.model;
 
 import java.util.List;
 
