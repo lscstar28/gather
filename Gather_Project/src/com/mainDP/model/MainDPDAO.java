@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.gather.entity.DesignDTO;
+import com.gather.entity.DesignDTOR;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
 
@@ -85,10 +85,10 @@ public class MainDPDAO {
 	}
 
 	// ========== 팀 기획 정보(기획 번호, 기획 주제) 가져오기 ==========	
-	public DesignDTO getDesign(int tIdx) {
+	public DesignDTOR getDesign(int tIdx) {
 		System.out.println("dao getDesign : " + tIdx);
 		SqlSession session = factory.openSession();
-		DesignDTO dto = null;
+		DesignDTOR dto = null;
 		synchronized (factory) {
 			try {
 				dto = session.selectOne("my.gather-mapping.getDesign", tIdx);

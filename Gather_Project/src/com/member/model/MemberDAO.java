@@ -29,7 +29,7 @@ public class MemberDAO {
 		System.out.println("Dao");
 		MemberDTO member = new MemberDTO(id,pwd);
 		System.out.println("id,pwd : " + id + pwd);
-		return factory.openSession().selectOne("my.memberMapper.login",member);
+		return factory.openSession().selectOne("my.memberMapper.login", member);
 	}
 
 }

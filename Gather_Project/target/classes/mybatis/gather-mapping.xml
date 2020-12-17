@@ -41,7 +41,7 @@
 	</select>
 
 	<!-- 팀 기획 정보(기획 번호, 기획 주제) -->
-	<select id="getDesign" parameterType="java.lang.Integer" resultType="DesignDTO">
+	<select id="getDesign" parameterType="java.lang.Integer" resultType="DesignDTOR">
 		<![CDATA[
 			SELECT D_IDX AS DIDX, D_NAME AS DNAME FROM DESIGN WHERE T_IDX=#{tIdx}
 		]]>

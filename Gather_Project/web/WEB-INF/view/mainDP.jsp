@@ -11,21 +11,21 @@
 <body>
 <!-- head -->
 	<h1>Gather</h1>
-	<input type="button" value="test" onclick="location.href='LastTeam.do?mIdx=3'">
-		<input type="button" value="logout">
+		회원 이름 : ${sessionScope.logOK.name}
+		<input type="button" value="logout"><br>
 		<!-- side -->
 			<c:if test="${!empty list}">
 				<ul style="list-style: none;">
 				<c:forEach items="${list}" var="ob">
 					<li><a href ="LastTeam.do?tIdx=${ob.tIdx}&mIdx=${mIdx}">${ob.tIdx} : ${ob.tName}</a></li>
 				</c:forEach>
-					<li><a href='CreTeamPg.do?mIdx=${mIdx}'>팀 만들기</a></li>
+					<li><a href='CreTeamPg.do?mIdx=${sessionScope.logOK.m_idx}'>팀 만들기</a></li>
 					<c:if test="${!empty confirmList}">
 					----- 응답 대기중인 팀 -----
 					<c:forEach items="${confirmList}" var="ob">
 						<li>${ob.tIdx} : ${ob.tName}
-						<input type="button" value="수락" onclick="location.href='confrim.do?tIdx=${ob.tIdx}&mIdx=${mIdx}&ptIdx=${tIdx}'">
-						<input type="button" value="취소" onclick="location.href='noConfrim.do?tIdx=${ob.tIdx}&mIdx=${mIdx}&ptIdx=${tIdx}'">
+						<input type="button" value="수락" onclick="location.href='confrim.do?tIdx=${ob.tIdx}&mIdx=${sessionScope.logOK.m_idx}&ptIdx=${tIdx}'">
+						<input type="button" value="취소" onclick="location.href='noConfrim.do?tIdx=${ob.tIdx}&mIdx=${sessionScope.logOK.m_idx}&ptIdx=${tIdx}'">
 						</li>
 					</c:forEach>
 					</c:if>
@@ -35,7 +35,7 @@
 				<h3>팀 소개</h3>
 				팀 번호 : ${tIdx}
 				팀 이름 : ${tName} <input type="button" value="수정" onclick="location.href='UpTeamPg.do?mIdx=${mIdx}&tName=${tName}&tIdx=${tIdx}'"><br>
-				<input type="button" value="탈퇴하기" onclick="location.href='escape.do?mIdx=${mIdx}&tIdx=${tIdx}'"><br>
+				<input type="button" value="탈퇴하기" onclick="location.href='escape.do?mIdx=${sessionScope.logOK.m_idx}&tIdx=${tIdx}'"><br>
 				-----팀원 -----<br>
 				<c:forEach items="${mlist}" var="ob">
 					${ob}<br>
@@ -102,7 +102,7 @@
 		</c:if>
 		<c:if test="${empty list}">
 			<ul style="list-style: none;">
-				<li><a href='CreTeamPg.do?mIdx=${mIdx}'>팀 만들기</a></li>
+				<li><a href='CreTeamPg.do?mIdx=${sessionScope.logOK.m_idx}'>팀 만들기</a></li>
 			</ul>
 
 			현재 참여하고 있는 팀이 없습니다.

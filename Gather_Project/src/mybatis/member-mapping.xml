@@ -18,7 +18,7 @@
 		<!-- 로그인 -->
 	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
 		<![CDATA[
-   			SELECT ID, PW FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+   			SELECT M_IDX, NAME FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
   			]]>
 	</select>
 	

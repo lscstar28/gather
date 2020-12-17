@@ -29,7 +29,7 @@ public class MemberController {
 	@RequestMapping(value="/join.do")
 	public String join() {
 		System.out.println("회원가입 창으로 이동");
-		return "join";
+		return "login/join";
 	}
 	
 	// 아이디 중복확인 -------------------------------------
@@ -62,36 +62,35 @@ public class MemberController {
 			System.out.println("회원가입 실패");
 		}
 		
-		return "join";
+		return "login/login";
 	}
 	
-	//(로그인화면으로 이동)-------------------------------------
+	//로그인화면으로 이동-------------------------------------
 		@RequestMapping(value="/login.do") 
 		public String login() {
-			return "login"; 
+			return "login/login"; 
 		}
 
-	//전체 출력하기------------------------------------------
+	//로그인------------------------------------------
 		@RequestMapping(value="/checklogin.do")
 			public String checklogin(HttpServletRequest request) {
 
 			String loginId = request.getParameter("id");
 			String loginPw = request.getParameter("pw");
 			
-			MemberDTO member = new MemberDTO();
-
-			
 			System.out.println("loginId: " + loginId);
-			System.out.println("loginId: " + loginPw);
+			System.out.println("loginPw: " + loginPw);
 			
+			MemberDTO member = new MemberDTO();
 			member =memberService.checklogin(loginId,loginPw);
-
-			System.out.println("member: "+member);
+			
+			System.out.println("mIdx : " + member.getM_idx());
+			System.out.println("name : " + member.getName());
 
 			if(member!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("logOK", member);
-			return "/mainDP";
+			return "login/logOK";
 			}else {
 				return "login";
 			}

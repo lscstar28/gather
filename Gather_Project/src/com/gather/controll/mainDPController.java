@@ -11,7 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gather.entity.DesignDTO;
+import com.gather.entity.DesignDTOR;
+import com.gather.entity.MemberDTO;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
 import com.mainDP.model.MainDPService;
@@ -24,13 +25,13 @@ public class mainDPController {
 	HttpSession session;
 
 	@RequestMapping(value = "/mainDP.do")
-	public String teamList(HttpServletRequest request, @RequestParam("mIdx") int mIdx, Model model) {
+	public String teamList(HttpServletRequest request, Model model) {
 		System.out.println("==================== mainDP.do Start ====================");//mainDP consol 경계선
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("logOK");
+		int mIdx = member.getM_idx();							
 		System.out.println("로그인 번호 확인 : " + mIdx);				//로그인 번호 확인
-		
-		HttpSession session = request.getSession(true);
-		session.setAttribute("mIdx", mIdx);
-//		int mIdx = session.getAttribute("mIdx");				// 세션에서 회원번호 받기
+		session.setAttribute("mIdx", mIdx);						
 		
 		List<TeamDTO> list = service.listTeam(mIdx);			//회원번호로 팀 리스트 불러오기
 		model.addAttribute("list", list);						//팀 리스트 다음 페이지로 보내기
@@ -56,7 +57,7 @@ public class mainDPController {
 			model.addAttribute("clist", clist);
 			
 			//기획
-			DesignDTO des = service.getDesign(tIdx);					// 팀의 기획 정보((dIdx,dName)
+			DesignDTOR des = service.getDesign(tIdx);					// 팀의 기획 정보((dIdx,dName)
 			if(des != null) {
 				//==========	디자인이 비어있지 않을 시 디자인 정보 불러오기	==========
 				List<String> purp = service.designPurpose(des.getdIdx());	//기획 목적
