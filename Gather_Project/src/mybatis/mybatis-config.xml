@@ -4,7 +4,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.gather.entity.MemberDTO" alias="MemberDTO"/> 
+		<typeAlias type="com.gather.entity.MemberDTO" alias="MemberDTO"/>  <!-- 안되면 alias="ob" -->
 		<typeAlias type="com.gather.entity.TeamDTO" alias="TeamDTO"/>
 		<typeAlias type="com.gather.entity.DesignDTO" alias="DesignDTO"/>
 		<typeAlias type="com.gather.entity.WorkDTO" alias="WorkDTO"/>
@@ -16,7 +16,6 @@
 		<mapper resource="mybatis/member-mapping.xml"/>  <!-- 동재꺼 -->
 		<mapper resource="mybatis/work-mapping.xml"/>  <!-- work -->
 		<mapper resource="mybatis/conference-mapping.xml"/>  <!-- conference -->
-		<mapper resource="mybatis/design-mapping.xml"/>  <!-- design -->
 	</mappers>
 	
 	

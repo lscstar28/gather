@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 	회의추가
 	<form id="CFWriter" method="post" action="CFWriter.do">
 	 		<input type="hidden" id="tIdx" name="tIdx" value="${tIdx}"><br>
+	 		<input type="hidden" id="pgnum" name="pg" value="${pg}"><br>
 	 		회의 제목: <input type="text" id="CFTitle" name="CFTitle"><br>
 	 		회의 내용 : <input type="text" id="CFContent" name="CFContent"><br>
 	 		<input type="submit" value="추가하기">

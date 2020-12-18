@@ -105,19 +105,12 @@ ALTER TABLE TEAM
 			T_IDX
 		);
 
-
 /* 기획 */
 CREATE TABLE DESIGN (
 	D_IDX NUMBER(20) NOT NULL, /* 기획번호 */
 	D_NAME VARCHAR2(200), /* 기획주제 */
-	D_PURP VARCHAR2(200), /* 기획목적 */
-	D_CON VARCHAR2(200),  /* 기획내용 */
 	T_IDX NUMBER(20) /* 팀번호 */
 );
-
-SELECT * FROM TAB;
-SELECT * FROM DESIGN;
-
 
 CREATE UNIQUE INDEX PK_DESIGN
 	ON DESIGN (
@@ -422,6 +415,6 @@ INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, '회의 제목', '회의 내용',
 INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, #{c_title}, #{c_content}, SYSDATE, #{t_idx})
 
 SELECT * FROM CONFERENCE WHERE T_IDX=1
-
+SELECT COUNT(*) FROM CONFERENCE
 
 >>>>>>> branch 'master' of https://github.com/lscstar28/gather.git
