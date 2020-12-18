@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="asset/css/main.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/view/deco/head.jsp" %>
  <form  method="post" action="checklogin.do">
 <table border="0" align="center" width="350">
 	<tr>

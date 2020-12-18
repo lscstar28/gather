@@ -1,6 +1,7 @@
 <%@page import="com.gather.entity.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,8 @@
 </head>
 <body>
 logInOk<br>
-${sessionScope.logOK.m_idx}<br>
-${sessionScope.logOK.name}<br>
-<input type="button" value="메인화면으로" onclick="location.href='mainDP.do?mIdx=${sessionScope.logOK.m_idx}'">
+<c:url var="url" value="mainDP.do?">
+</c:url>
+<c:redirect url="${url}"/>
 </body>
 </html>

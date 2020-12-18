@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="asset/css/main.css">
 
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
@@ -91,6 +92,7 @@
 
 </head>
 	<body>
+	<%@ include file="/WEB-INF/view/deco/head.jsp" %>
 		<form id="joinWriteForm" action="/gather/insertJoin.do" method="GET">
 			아이디: <input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required>
 			<span id="resultID"></span><br>
