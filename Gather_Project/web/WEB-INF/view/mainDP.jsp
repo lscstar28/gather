@@ -108,6 +108,11 @@
 					<a href='workInsert.do?tIdx=${tIdx}'>업무/진행 만들기</a>
 				</c:if>
 			</div>
+			
+			<div class="body">
+				<!-- ========== 회의록 ========== -->
+				<h3><a href="conference.do?tIdx=${tIdx}"> 회의록</a></h3>
+			</div>
 		</div>
 	</c:if>
 

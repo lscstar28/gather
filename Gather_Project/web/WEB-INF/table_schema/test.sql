@@ -28,4 +28,7 @@
 			
 			SELECT COUNT(*) FROM MY_T WHERE m_idx=1
 			
+			SELECT * FROM CONFERENCE WHERE T_IDX=1;
+			
+			
 			

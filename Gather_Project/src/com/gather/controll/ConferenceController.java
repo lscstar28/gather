@@ -10,14 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.conference.model.ConferenceDAO;
 import com.gather.entity.ConferenceDTO;
-import com.mainDP.model.ConferenceService;
 
 @Controller
 public class ConferenceController {
 	@Autowired
-	private ConferenceDAO service;
+	private ConferenceService service;
 	
 	// 회의 리스트 보기
 	@RequestMapping(value = "/conference.do")
@@ -25,14 +23,14 @@ public class ConferenceController {
 		List<ConferenceDTO> conferenceList = service.conferenceList(tIdx);
 		model.addAttribute("conferenceList",conferenceList);
 		model.addAttribute("tIdx",tIdx);
-		return "conference";
+		return "conference/conference";
 	}
 	
 	// conferenceInsert writer 로 가기
 		@RequestMapping(value = "/conferenceInsert.do")
 		public String conferenceInsert(@RequestParam("tIdx") int tIdx, Model model) {
 			model.addAttribute("tIdx",tIdx);
-			return "conferenceWriter";
+			return "conference/conferenceWriter";
 		}
 		
 	// 회의 추가하기
@@ -43,14 +41,14 @@ public class ConferenceController {
 			entity.setC_title(request.getParameter("CFTitle"));
 			entity.setC_content(request.getParameter("CFContent"));
 			service.conferenceInsert(entity);
-			return "conferenceWriteOK";
+			return "conference/conferenceWriteOK";
 		}
 		
 	// 회의 삭제하기
 			@RequestMapping(value = "/conferenceDelete.do")
 			public String conferenceDelete(@RequestParam("cIdx") int cidx) {
 				service.conferenceDelete(cidx);
-				return "conferenceWriteOK";
+				return "conference/conferenceWriteOK";
 			}
 			
 	// 회의 수정하기 위한 write 가기
@@ -59,7 +57,7 @@ public class ConferenceController {
 				ConferenceDTO entity = new ConferenceDTO();
 				entity = service.conferenceModidy(cidx);
 				model.addAttribute("entity",entity);
-				return "conferenceModify";
+				return "conference/conferenceModify";
 			}
 	
 	// 회의 수정하기
@@ -71,7 +69,7 @@ public class ConferenceController {
 				entity.setC_title(request.getParameter("CFTitle"));
 				entity.setC_content(request.getParameter("CFContent"));
 				service.conferenceUpdate(entity);
-				return "conferenceWriteOK";
+				return "conference/conferenceWriteOK";
 			}
 			
 }

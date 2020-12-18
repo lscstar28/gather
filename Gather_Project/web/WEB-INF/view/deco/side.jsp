@@ -4,7 +4,7 @@
     
 <div class="side">
 		<ul style="list-style: none;">
-		<c:forEach items="${list}" var="ob">
+		<c:forEach items="${sessionScope.list}" var="ob">
 			<li><a href ="LastTeam.do?tIdx=${ob.tIdx}&mIdx=${mIdx}" style="color: #eee6c4; font-weight: bold;">${ob.tIdx} : ${ob.tName}</a></li>
 		</c:forEach>
 			<li><a href='CreTeamPg.do?mIdx=${sessionScope.logOK.m_idx}' style="color: #eee6c4; font-weight: bold;">팀 만들기</a></li>

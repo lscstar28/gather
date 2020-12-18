@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="head" style="height: 100px; width: 100%; background-color: #225C73; color: white;">
-	<h1>Gather</h1>
+	<h1><a href="/gather/index.jsp" style="color: white;">Gather</a></h1>
 	<c:if test="${!empty sessionScope.logOK}">
 	회원 이름 : ${sessionScope.logOK.name}
-	<input type="button" value="logout"><br>
+	<input type="button" value="logout" onclick="location.href='logout.do'"><br>
 	</c:if>
 </div>	

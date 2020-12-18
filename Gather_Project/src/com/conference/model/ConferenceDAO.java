@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import com.gather.entity.ConferenceDTO;
 
@@ -18,6 +17,9 @@ public class ConferenceDAO {
 	public List<ConferenceDTO> conferenceList(int tIdx) {
 		List<ConferenceDTO> list = factory.openSession().selectList("my.conferenceMapper.conferenceList", tIdx);
 		factory.openSession().close();
+		for (ConferenceDTO ob : list) {
+			System.out.println("a"+ob.getC_title());
+		}
 		return list;
 	}
 

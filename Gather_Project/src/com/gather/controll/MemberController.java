@@ -90,10 +90,26 @@ public class MemberController {
 			if(member!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("logOK", member);
-			return "login/logOK";
-			}else {
-				return "login";
 			}
+			return "login/logOK";
 		}
 	
+		@RequestMapping(value="/logout.do")
+		public String logout(HttpServletRequest request) {
+			HttpSession session=request.getSession();
+			MemberDTO dto = null;
+			try {
+				dto=(MemberDTO)session.getAttribute("logOK");
+			} catch (Exception e) {
+				e.printStackTrace();
+				dto=null;
+			}
+			if(dto != null)
+			{
+				session.removeAttribute("logOK"); 
+				session.removeAttribute("list"); 
+			}
+			return "login/logoutOK";
+		}
+		
 }

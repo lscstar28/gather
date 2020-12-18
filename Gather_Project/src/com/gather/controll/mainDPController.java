@@ -34,17 +34,18 @@ public class mainDPController {
 		session.setAttribute("mIdx", mIdx);						
 		
 		List<TeamDTO> list = service.listTeam(mIdx);			//회원번호로 팀 리스트 불러오기
-		model.addAttribute("list", list);						//팀 리스트 다음 페이지로 보내기
 		System.out.println("팀 리스트 사이즈 확인 : " + list.size());	//팀 리스트 사이즈 확인
 		
 		List<TeamDTO> confirmList = service.callConfrim(mIdx);	// 팀 초대 요청 리스트 받아오기
 		model.addAttribute("confirmList", confirmList);			// 팀 초대 요청 리스트 다음 페이지로 보내기
+		
 			for (TeamDTO teamDTO : confirmList) {				// 팀 초대 요청 리스트 확인
 				System.out.println("초대 요청을 보낸 팀 이름 : " + teamDTO.gettName()); 
 			}
 			
 //==========	팀 리스트가 비어있지 않을 시 마지막으로 수정한 팀 불러오기	==========
-		if (list.size() != 0) {									
+		if (list.size() != 0) {				
+			session.setAttribute("list", list);						//팀 리스트 세션에 보내기
 			TeamDTO selTeam = service.getSelectTeam(mIdx);			// 마지막에 수정한 팀(tIdx,tName)
 			int tIdx = selTeam.gettIdx();
 			System.out.println("마지막에 수정한 팀의 번호" + tIdx);

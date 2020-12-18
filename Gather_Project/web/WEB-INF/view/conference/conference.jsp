@@ -8,9 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="asset/css/main.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/view/deco/head.jsp"%>
 
+	<div class="wrap">
+			<!-- side -->
+			<%@ include file="/WEB-INF/view/deco/side.jsp"%>
+
+	<div class="body">
 	<c:if test="${!empty conferenceList}">
 		<c:forEach items="${conferenceList}" var="ob">
 			<br>팀 번호: ${ob.t_idx}<br>
@@ -23,5 +30,7 @@
 		</c:forEach>
 	</c:if>
 	<input type="button" value="회의 추가하기" onclick="location.href='conferenceInsert.do?tIdx=1'"><br>
+	</div>
+	</div>
 </body>
 </html>
