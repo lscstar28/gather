@@ -14,14 +14,14 @@ display: flex;
 .side{
 min-height: 900px; 
 width: 200px; 
-background-color: #A6958F;
+background-color: #D6C5BF;
 border-bottom: 0.5px solid black;
 border-right: 0.5px solid black;
 }
 .body{
 width: 300px;
 flex: 1;
-background-color: #BFB6AE; 
+background-color: #DFD6CE; 
 border-bottom: 0.5px solid black;
 border-right: 0.5px solid black;
 }

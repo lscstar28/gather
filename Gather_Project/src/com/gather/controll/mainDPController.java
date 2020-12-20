@@ -27,6 +27,9 @@ public class mainDPController {
 	@RequestMapping(value = "/mainDP.do")
 	public String teamList(HttpServletRequest request, Model model) {
 		System.out.println("==================== mainDP.do Start ====================");//mainDP consol 경계선
+		String url = request.getRequestURL().toString();
+		System.out.println("url"+url);
+				
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("logOK");
 		int mIdx = member.getM_idx();							
