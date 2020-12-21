@@ -16,15 +16,15 @@
 	</div>
 	<div class="wrap">
 		<div class="body">
- 			<form  method="post" action="checklogin.do">
-				<table border="0" align="center" width="350">
+ 			<form id="login" method="post" action="checklogin.do">
+				<table align="center" style="border: 0; width: 350px;">
 					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="id"></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
-						<td><input type="text" name="pw"></td>
+						<td><input type="password" name="pw"></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">

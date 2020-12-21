@@ -130,7 +130,7 @@
 						</tr>
 						</c:forEach>
 						<tr>
-						<td colspan="2"><input type="button" value="추가하기"></td>
+						<td colspan="2"><input type="button" value="추가하기" onclick="location.href='workInsert.do?tIdx=${tIdx}'"></td>
 						</tr>
 					</table>
 					<div class="listBox">
@@ -206,13 +206,14 @@
 	<c:if test="${empty list}">
 		<div class="wrap">
 			<div class="side">
-				<ul style="list-style: none;">
-					<li><a href='CreTeamPg.do?mIdx=${sessionScope.logOK.m_idx}'>팀
-							만들기</a></li>
-				</ul>
+				<%@ include file="/WEB-INF/view/parts/side.jsp"%>
 			</div>
 			<div class="body">
-				현재 참여하고 있는 팀이 없습니다.
+				<div class="mainCon">
+					<br>
+					현재 참여하고 있는 팀이 없습니다.
+					<br>
+				</div>
 			</div>
 		</div>
 	</c:if><!-- ${empty list}  end -->
