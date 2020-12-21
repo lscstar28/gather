@@ -17,6 +17,91 @@
 		]]>
 	</insert>
 	
+	<delete id="designDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE DESIGN WHERE D_IDX = #{didx}
+		]]>
+	</delete>
+	
+	<select id="designModify" parameterType="java.lang.Integer" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM DESIGN WHERE D_IDX=#{didx}
+		]]>
+	</select>
+	
+	<update id="designUpdate" parameterType="DesignDTO">
+		<![CDATA[
+			UPDATE DESIGN SET D_NAME = #{d_Name} WHERE D_IDX = #{d_Idx}
+		]]>
+	</update>
+	
+	<select id="designPurpList" parameterType="DesignDTO" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM D_PURP WHERE D_IDX = #{d_Idx}
+		]]>
+	</select>
+	
+	<insert id="designPurpInsert" parameterType="DesignDTO">
+		<![CDATA[
+			INSERT INTO D_PURP(DP_IDX, D_IDX, D_PURP) 
+			VALUES(SQ_DPIDX.NEXTVAL, #{d_Idx}, #{d_Purp})
+		]]>
+	</insert>
+	
+	<delete id="designPurpDelete" parameterType="DesignDTO">
+		<![CDATA[
+			DELETE D_PURP WHERE D_PURP = #{d_Purp}
+		]]>
+	</delete>
+	
+	<select id="designPurpModify" parameterType="DesignDTO" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM D_PURP WHERE DP_IDX = #{dp_Idx}
+		]]>
+	</select>
+	
+	<update id="designPurpUpdate" parameterType="DesignDTO">
+		<![CDATA[
+			UPDATE D_PURP SET D_PURP = #{d_Purp} WHERE DP_IDX = #{dp_Idx}
+		]]>
+	</update>
+	
+	
+	<select id="designConList" parameterType="DesignDTO" resultType="DesignDTO">
+	
+		<![CDATA[
+			SELECT * FROM D_CON WHERE D_IDX=#{d_idx}
+		]]>
+	</select>
+	
+	
+	<insert id="designConInsert" parameterType="DesignDTO">
+		<![CDATA[
+			INSERT INTO D_CON(DC_IDX, D_IDX, D_CON) 
+			VALUES(SQ_DCIDX.NEXTVAL, #{d_Idx}, #{d_Con})
+		]]>
+	</insert>
+
+	
+	<delete id="designConDelete" parameterType="DesignDTO">
+		<![CDATA[
+			DELETE D_CON WHERE D_CON = #{d_Con}
+		]]>
+	</delete>
+	
+	<select id="designConModify" parameterType="DesignDTO" resultType="DesignDTO">
+		<![CDATA[
+			SELECT * FROM D_CON WHERE DC_IDX = #{dc_Idx}
+		]]>
+	</select>
+	
+	<update id="designConUpdate" parameterType="DesignDTO">
+		<![CDATA[
+			UPDATE D_CON SET D_CON = #{d_Con} WHERE DC_IDX = #{dc_Idx}
+		]]>
+	</update>
+	
+	
 </mapper>
 
 

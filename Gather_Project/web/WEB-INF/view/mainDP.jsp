@@ -69,7 +69,7 @@
 						<td style="background-color: #D6C5BF;">기획 주제 </td>
 						</tr>
 						<tr>
-						<td>${des.dName}</td>
+						<td><a href="designModify.do?">${des.dName}</a></td>
 						</tr>
 					</table>
 					<div class="listBox">

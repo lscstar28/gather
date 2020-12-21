@@ -123,11 +123,11 @@ ALTER TABLE DESIGN
 		PRIMARY KEY (
 			D_IDX
 		);
-
+		
 /* 업무 */
 CREATE TABLE WORK (
 	W_IDX NUMBER(20) NOT NULL, /* 업무번호 */
-	WORK VARCHAR2(200), /* 업무 */
+	WORK VARCHAR2(200), /* 업무 제목 */
 	W_PROC NUMBER(1), /* 업무 진행도 */
 	W_SDATE DATE, /* 업무 시작날짜 */
 	W_EDATE DATE, /* 업무 완료날짜 */
@@ -149,20 +149,25 @@ ALTER TABLE WORK
 
 /* 목적 */
 CREATE TABLE D_PURP (
+	DP_IDX NUMBER(20), /* 기획목적번호 */
 	D_IDX NUMBER(20), /* 기획번호 */
 	D_PURP VARCHAR2(300) /* 기획목적 */
 );
 
+/* 목적 */
+CREATE TABLE D_PURP (
+	DP_IDX NUMBER(20), /* 기획목적번호 */
+	D_IDX NUMBER(20), /* 기획번호 */
+	D_PURP VARCHAR2(300) /* 기획목적 */
+);
+SELECT * FROM D_PURP
+SELECT * FROM D_CON
+
 /* 내용 */
 CREATE TABLE D_CON (
+	DC_IDX NUMBER(20), /* 기획목적번호 */
 	D_IDX NUMBER(20), /* 기획번호 */
 	D_CON VARCHAR2(300) /* 기획내용 */
-);
-
-/* 응답 대기중 */
-CREATE TABLE CALL (
-	M_IDX NUMBER(20), /* 회원번호 */
-	T_IDX NUMBER(20) /* 팀번호 */
 );
 
 /* 마지막에 수정한 팀 */
@@ -292,12 +297,24 @@ ALTER TABLE L_TEAM
 		REFERENCES TEAM (
 			T_IDX
 		);
+	
+/* 업무 */
+CREATE TABLE CONFERENCE (
+	C_IDX NUMBER(20) NOT NULL, /* 회의번호 */
+	C_TITLE VARCHAR2(50) NOT NULL, /* 회의제목 */
+	C_CONTENT VARCHAR2(300) NOT NULL, /* 회의내용 */
+	C_DATE DATE NOT NULL, /* 회의 작성날짜 */
+	T_IDX NUMBER(20) NOT NULL /* 팀번호 */
+);		
 		
 /* 시퀀스 생성 */
 CREATE SEQUENCE SQ_MIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE; /* 회원번호 생성 */
 CREATE SEQUENCE SQ_TIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 팀번호 생성 */
 CREATE SEQUENCE SQ_WIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 업무번호 생성 */
 CREATE SEQUENCE SQ_DIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 기획번호 생성 */
+CREATE SEQUENCE SQ_CIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 회의번호 생성 */
+CREATE SEQUENCE SQ_DPIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 기획목적번호 생성 */
+CREATE SEQUENCE SQ_DCIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 기획내용번호 생성 */
 
 --------------------관리자ID----------------------
 INSERT INTO MEMBER VALUES(1, 'admin', 'admin', '신동재', '01012345678');
@@ -334,8 +351,8 @@ INSERT INTO D_PURP VALUES(1, '첫번째 기획서의 목적 넷');
 INSERT INTO D_CON VALUES(1, '첫번째 기획서에서 보장하는 기능 하나');
 INSERT INTO D_CON VALUES(1, '첫번째 기획서에서 보장하는 기능 둘');
 --------------------1팀 업무----------------------
-INSERT INTO WORK(W_IDX, WORK, W_PROC, T_IDX) VALUES(0, '업무 제로', 0, 1);
-INSERT INTO WORK(W_IDX, WORK, W_PROC, T_IDX) VALUES(1, '업무 하나', 0, 1);
+INSERT INTO WORK(W_IDX, WORK, W_PROC, T_IDX) VALUES(0, '업무 제로', 1, 1);
+INSERT INTO WORK(W_IDX, WORK, W_PROC, T_IDX) VALUES(1, '업무 하나', 1, 1);
 INSERT INTO WORK(W_IDX, WORK, W_PROC, W_SDATE, W_MEM, T_IDX) VALUES(2, '업무 둘', 2, TO_DATE('2020-12-10', 'YYYY-MM-DD'), '신동재', 1);
 INSERT INTO WORK(W_IDX, WORK, W_PROC, W_SDATE, W_EDATE, W_MEM, T_IDX) VALUES(3, '업무 셋', 3, TO_DATE('2020-12-11', 'YYYY-MM-DD'), TO_DATE('2020-12-20', 'YYYY-MM-DD'), '이성찬', 1);
 INSERT INTO WORK(W_IDX, WORK, W_PROC, W_SDATE, W_MEM, T_IDX) VALUES(4, '업무 넷', 2, TO_DATE('2020-12-11', 'YYYY-MM-DD'), '신동재', 1);
@@ -354,59 +371,6 @@ SELECT * FROM TEAM;
 SELECT * FROM WORK;
 SELECT * FROM CALL;
 SELECT * FROM L_TEAM;
-INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID='admin'), 1); 
-
-select t_idx from call where m_idx=1 group by t_idx;
-
-select team.t_idx, t_name,m_idx 
-from team,call 
-where team.t_idx = call.t_idx and m_idx=1 
-group by team.t_idx,t_name,m_idx;
-
-delete from L_TEAM where M_IDX=1;
-delete from MY_T where M_IDX=3;
-delete from L_TEAM where M_IDX=1;
-
-update L_TEAM set t_idx=1 where m_Idx=1;
-update L_TEAM set t_idx=6 where m_Idx=2;
-update L_TEAM set t_idx=1 where m_Idx=3;
-
-INSERT INTO TEAM VALUES(SQ_TIDX.NEXTVAL, '여덟팀');
-INSERT INTO MY_T VALUES(1, (SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX'));
-update L_TEAM set t_IDx=1 where m_idx=3;
-
-SELECT M_IDX FROM MY_T WHERE T_IDX=(SELECT LAST_NUMBER-1 FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SQ_TIDX')
-
-SELECT rn
-			FROM(SELECT ROWNUM rn, A.*
-			FROM(SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME AS TNAME
-			FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX AND M_IDX=3
-			ORDER BY TIDX DESC
-			) A)
-			WHERE TIDX = (SELECT T_IDX FROM L_TEAM WHERE M_IDX=3)
-
-SELECT rn
-FROM(SELECT ROWNUM rn, A.*
-FROM(SELECT M_IDX AS MIDX, MY_T.T_IDX AS TIDX, T_NAME AS TNAME
-FROM MY_T, TEAM WHERE MY_T.T_IDX=TEAM.T_IDX AND M_IDX=2
-ORDER BY TIDX DESC
-) A)
-WHERE TIDX = (SELECT T_IDX FROM L_TEAM WHERE M_IDX=2)
-			
-INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID=#{mId}), #{tIdx})
-select * from MY_T where m_idx=1 and t_idx=3;
-select * from call where m_idx=1 and t_idx=3;
-
-
-INSERT INTO CALL VALUES((SELECT M_IDX FROM MEMBER WHERE ID='admin'), 1)
-SELECT * FROM MY_T WHERE M_IDX=1 AND T_IDX=1;
-SELECT * FROM CALL WHERE M_IDX=1 AND T_IDX=1;
-
-update L_TEAM set t_idx=1 where m_idx=1;
-update L_TEAM set t_idx=3 where m_idx=2;
-update L_TEAM set t_idx=1 where m_idx=3;
-
-SELECT M_IDX FROM MEMBER WHERE ID='admin';
 
 /* 순번 매긴 팀 리스트 가져오기 */
 SELECT ROWNUM, A.*
@@ -439,24 +403,25 @@ ORDER BY WPROC DESC;
 SELECT NAME FROM MEMBER, CALL 
 WHERE MEMBER.M_IDX = CALL.M_IDX AND T_IDX=1;
 
-update TEAM set t_name='공룡' where t_Idx=1
-
 <<<<<<< HEAD
 =======
 CREATE SEQUENCE SQ_MIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 CREATE SEQUENCE SQ_TIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 CREATE SEQUENCE SQ_WIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 CREATE SEQUENCE SQ_DIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
+CREATE SEQUENCE SQ_CIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 
 drop sequence SQ_MIDX;
 select * from seq
+select * from work
 
-select team.t_idx, t_name
-from team,call 
-where team.t_idx = call.t_idx and m_idx=3
-group by team.t_idx,t_name
 
-select t_idx from(SELECT ROWNUM rn, A.* FROM(SELECT T_IDX FROM MY_T WHERE M_IDX=1)A) where rn=4;
+SELECT * FROM WORK WHERE T_IDX=1
 
-SELECT T_IDX FROM MY_T WHERE M_IDX=1 and ROWNUM=3
+INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, '회의 제목', '회의 내용', SYSDATE, 1);
+INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, #{c_title}, #{c_content}, SYSDATE, #{t_idx})
 
+SELECT * FROM CONFERENCE WHERE T_IDX=1
+SELECT COUNT(*) FROM CONFERENCE
+
+>>>>>>> branch 'master' of https://github.com/lscstar28/gather.git
