@@ -4,6 +4,21 @@
 
 <mapper namespace="my.conferenceMapper">
 	
+	<select id="getTotalConference" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM CONFERENCE
+		]]>
+	</select>
+	
+	<select id="conferenceList1" parameterType="java.lang.Integer" resultType="ConferenceDTO">
+		<![CDATA[
+			SELECT *
+			FROM (SELECT ROWNUM RN, AA.* FROM (SELECT * FROM CONFERENCE ORDER BY C_IDX DESC) AA)
+			WHERE RN >= #{startNum} AND RN <= #{endNum} 
+		]]>
+	</select>
+	
+	
 	<select id="conferenceList" parameterType="java.lang.Integer" resultType="ConferenceDTO">
 		<![CDATA[
 			SELECT * FROM CONFERENCE WHERE T_IDX=#{t_idx}
