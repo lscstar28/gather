@@ -13,6 +13,9 @@ public class DesignService {
 	@Autowired
 	private DesignDAO dao;
 
+	
+	//-----------------기획 주제
+	
 	public List<DesignDTO> designList(int tIdx) {
 		return dao.designList(tIdx);
 	}
@@ -33,4 +36,54 @@ public class DesignService {
 		dao.designUpdate(entity);
 	}
 
+	
+	
+	//-----------------기획 목적
+	
+	public List<DesignDTO> designPurpList(int dIdx) {
+		return dao.designPurpList(dIdx);
+	}
+	
+	public void designPurpInsert(DesignDTO entity) {
+		dao.designPurpInsert(entity);
+	}
+
+	public void designPurpDelete(DesignDTO entity) {
+		dao.designPurpDelete(entity);	
+	}
+	
+	public DesignDTO designPurpModify(DesignDTO entity) {
+		return dao.designPurpModify(entity);
+	}
+	
+	public void designPurpUpdate(DesignDTO entity) {
+		dao.designPurpUpdate(entity);
+	}
+
+	
+
+	
+	
+	//-----------------기획 내용
+	public List<DesignDTO> designConList(int dIdx) {
+		return dao.designConList(dIdx);
+	}
+	
+	public void designConInsert(DesignDTO entity) {
+		dao.designConInsert(entity);
+	}
+	public void designConDelete(DesignDTO entity) {
+		dao.designConDelete(entity);	
+	}
+
+	public DesignDTO designConModify(DesignDTO entity) {
+		return dao.designConModify(entity);
+	}
+	
+	public void designConUpdate(DesignDTO entity) {
+		dao.designConUpdate(entity);
+	}
+	
+	
+	
 }

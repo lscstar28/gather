@@ -35,4 +35,49 @@ public class DesignDAO {
 		return factory.openSession().selectOne("my.designMapper.designModify", didx);
 	}
 
+	//--------------------기획목적------------------------------------
+	public List<DesignDTO> designPurpList(int dIdx) {
+		return factory.openSession().selectList("my.designMapper.designPurpList", dIdx);
+	}
+	
+	public void designPurpInsert(DesignDTO entity) {
+		factory.openSession().insert("my.designMapper.designPurpInsert", entity);
+	}
+
+	public void designPurpDelete(DesignDTO entity) {
+		factory.openSession().delete("my.designMapper.designPurpDelete", entity);
+	}
+	public DesignDTO designPurpModify(DesignDTO entity) {
+		return factory.openSession().selectOne("my.designMapper.designPurpModify", entity);
+	}
+
+	public void designPurpUpdate(DesignDTO entity) {
+		factory.openSession().update("my.designMapper.designPurpUpdate", entity);
+	}
+	
+	
+
+	
+	//--------------------기획내용------------------------------------
+	public List<DesignDTO> designConList(int dIdx) {
+		return factory.openSession().selectList("my.designMapper.designConList", dIdx);
+	}
+	
+	public void designConInsert(DesignDTO entity) {
+		factory.openSession().insert("my.designMapper.designConInsert", entity);
+	}
+	public void designConDelete(DesignDTO entity) {
+		factory.openSession().delete("my.designMapper.designConDelete", entity);
+	}
+	public DesignDTO designConModify(DesignDTO entity) {
+		return factory.openSession().selectOne("my.designMapper.designConModify", entity);
+	}
+	public void designConUpdate(DesignDTO entity) {
+		factory.openSession().update("my.designMapper.designConUpdate", entity);
+	}
+
+
+
+
+
 }

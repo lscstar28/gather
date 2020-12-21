@@ -154,17 +154,20 @@ CREATE TABLE D_PURP (
 	D_PURP VARCHAR2(300) /* 기획목적 */
 );
 
+/* 목적 */
+CREATE TABLE D_PURP (
+	DP_IDX NUMBER(20), /* 기획목적번호 */
+	D_IDX NUMBER(20), /* 기획번호 */
+	D_PURP VARCHAR2(300) /* 기획목적 */
+);
+SELECT * FROM D_PURP
+SELECT * FROM D_CON
+
 /* 내용 */
 CREATE TABLE D_CON (
 	DC_IDX NUMBER(20), /* 기획목적번호 */
 	D_IDX NUMBER(20), /* 기획번호 */
 	D_CON VARCHAR2(300) /* 기획내용 */
-);
-
-/* 응답 대기중 */
-CREATE TABLE CALL (
-	M_IDX NUMBER(20), /* 회원번호 */
-	T_IDX NUMBER(20) /* 팀번호 */
 );
 
 /* 마지막에 수정한 팀 */
