@@ -24,11 +24,16 @@
 			select count(*)
 			from MY_T where t_idx=1;
 			
-			select * from work;
+			select * from work  where t_idx=1;
+			SELECT 
+			W_IDX AS WIDX, WORK, W_PROC AS WPROC, TO_CHAR(W_SDATE, 'yyyy-mm-dd' )AS WSDATE,
+			TO_CHAR(W_EDATE, 'yyyy-mm-dd' )AS WEDATE, W_MEM AS WMEM, T_IDX AS TIDX 
+			FROM WORK WHERE T_IDX=1
+			ORDER BY WPROC DESC
 			
 			SELECT COUNT(*) FROM MY_T WHERE m_idx=1
 			
 			SELECT * FROM CONFERENCE WHERE T_IDX=1;
 			
-			
+			selec
 			

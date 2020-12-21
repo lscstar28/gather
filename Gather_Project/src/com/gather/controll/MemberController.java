@@ -84,12 +84,14 @@ public class MemberController {
 			MemberDTO member = new MemberDTO();
 			member =memberService.checklogin(loginId,loginPw);
 			
-			System.out.println("mIdx : " + member.getM_idx());
-			System.out.println("name : " + member.getName());
+//			System.out.println("mIdx : " + member.getM_idx());
+//			System.out.println("name : " + member.getName());
 
 			if(member!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("logOK", member);
+			}else {
+				return "login/logFail";
 			}
 			return "login/logOK";
 		}

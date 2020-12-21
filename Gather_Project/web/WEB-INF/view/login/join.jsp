@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="asset/css/main.css">
+<link rel="stylesheet" href="asset/css/Index.css">
 
 	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
@@ -92,16 +92,44 @@
 
 </head>
 	<body>
-	<%@ include file="/WEB-INF/view/deco/head.jsp" %>
-		<form id="joinWriteForm" action="/gather/insertJoin.do" method="GET">
-			아이디: <input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required>
-			<span id="resultID"></span><br>
-			비밀번호: <input type="password" name="inputPW"><br>
-			비밀번호 확인: <input type="password" name="checkPW">
-			<span id="resultPW"></span><br>
-			이름: <input type="text" name="inputName"><br>
-			연락처: <input type="text" name="inputPhone"><br>
-			<input type="submit" value="회원가입"><br>
-		</form>
+		<div class="contain">
+			<div class="head">
+			<%@ include file="/WEB-INF/view/parts/head.jsp" %>
+			</div>
+			<div class="wrap">
+				<div class="body">
+					<form id="joinWriteForm" action="/gather/insertJoin.do" method="GET">
+						<table align="center">
+							<tr>
+							<td>아이디</td>
+							<td><input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required><span id="resultID"></span></td>
+							</tr>
+							<tr>
+							<td>비밀번호</td>
+							<td><input type="password" name="inputPW"></td>
+							</tr>
+							<tr>
+							<td>비밀번호 확인</td>
+							<td><input type="password" name="checkPW"><span id="resultPW"></span></td>
+							</tr>
+							<tr>
+							<td>이름</td>
+							<td><input type="text" name="inputName"></td>
+							</tr>
+							<tr>
+							<td>연락처</td>
+							<td><input type="text" name="inputPhone"></td>
+							</tr>
+							<tr>
+							<td colspan="2" style="text-align: center;"><input type="submit" value="회원가입"></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="foot">
+				<%@ include file="/WEB-INF/view/parts/foot.jsp"%>
+			</div>
+		</div>	
 	</body>
 </html>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="asset/css/Workspace.css">
 </head>
 <body>
-<!-- head -->
+	<!-- head -->
 	<div class="head">
 	<%@ include file="/WEB-INF/view/parts/head.jsp" %>
 	</div>
@@ -18,18 +18,12 @@
 		</div>
 		<div class="body">
 			<div class="mainCon">
-				<form action="callMem.do" method="post" class="members">
-				<h4>팀 추가하기</h4>
-					<input type="hidden" name="mIdx" value="${mIdx}">
-					<input type="hidden" name="tIdx" value="${tIdx}">
-					<input type="text" name="mId" placeholder="팀원 아이디를 입력하세요"> <input type="submit" value="추가하기"> 
-				</form>
+
 			</div>
 		</div>
 	</div>
 	<div class="foot">
 		<%@ include file="/WEB-INF/view/parts/foot.jsp"%>
 	</div>
-
 </body>
 </html>

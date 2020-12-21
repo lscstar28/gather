@@ -1,0 +1,73 @@
+@charset "UTF-8";
+html, body, span, .wrap, div, table, tr, td, h1, h2, h3, h4, h5, h6, ul, ol, li{
+padding: 0;
+margin: 0;
+}
+html, body{
+width: 100%;
+height: 100%;
+}
+body{
+min-width: 1000px;
+}
+a{
+text-decoration:none;
+color: black;
+}
+table, td{
+border: 1px solid black;
+}
+table{
+width : 100%;
+margin-left: 2px;
+margin-right: 2px;
+text-align: center;
+}
+.head{
+background-color: white;
+border-bottom: 0.5px solid gray;
+display: flex; 
+align-items: center;
+justify-content: space-between;
+width: 100%;
+height: 100px;
+}
+.wrap{
+display: flex;
+flex-direction: row;
+align-items: stretch;
+min-height: 800px;
+}
+.side{
+background-color: #D6C5BF;
+float: left;
+width: 200px;
+}
+.body{
+background-color: white;
+width: 100%;
+}
+.mainCon{
+background-color: white;
+width: 800px;
+height: 100%;
+margin: 0 auto;
+}
+.listBox{
+width: 100%;
+display: flex; 
+flex-direction: row;
+justify-content: space-between;
+align-items: stretch;
+}
+.parts{
+width: 395px;
+}
+.foot{
+background-color: white;
+border-top: 0.5px solid gray;
+width: 100%;
+height: 100px;
+display: flex;
+justify-content: center;
+}

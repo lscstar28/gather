@@ -56,6 +56,8 @@
 			SELECT D_CON FROM D_CON WHERE D_IDX=#{dIdx}
 		]]>
 	</select>
+	
+		<!-- 팀 djqan 정보(기획 번호, 기획 주제) -->
 	<select id="getWorkList" parameterType="java.lang.Integer" resultType="WorkDTOR">
 		<![CDATA[
 			SELECT 

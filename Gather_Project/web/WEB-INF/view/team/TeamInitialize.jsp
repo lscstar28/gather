@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 </head>
 <body>
 TeamInitialize
-<input type="button" value="돌아가기" onclick="location.href='LastTeamDel.do?mIdx=${mIdx}&tIdx=${tIdx}'">
+<c:url var="url1" value="LastTeamDel.do?mIdx=${mIdx}&tIdx=${tIdx}">
+</c:url>
+<c:redirect url="${url1}"/>
 </body>
 </html>
