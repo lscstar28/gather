@@ -40,4 +40,18 @@ public class WorkDAO {
 		factory.openSession().update("my.workMapper.deleteDate", widx);
 	}
 	
+
+	public void workDelete(int widx) {
+		factory.openSession().delete("my.workMapper.workDelete", widx);
+		
+	}
+
+	public WorkDTO workModidy(int widx) {
+		return factory.openSession().selectOne("my.workMapper.workModify", widx);
+	}
+
+	public void workUpdate(WorkDTO entity) {
+		factory.openSession().update("my.workMapper.workUpdate", entity);
+	}
+	
 }

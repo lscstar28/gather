@@ -43,8 +43,8 @@ public class DesignDAO {
 		factory.openSession().insert("my.designMapper.designPurpInsert", entity);
 	}
 
-	public void designPurpDelete(DesignDTO entity) {
-		factory.openSession().delete("my.designMapper.designPurpDelete", entity);
+	public void designPurpDelete(int dp_Idx) {
+		factory.openSession().delete("my.designMapper.designPurpDelete", dp_Idx);
 	}
 	public DesignDTO designPurpModify(DesignDTO entity) {
 		return factory.openSession().selectOne("my.designMapper.designPurpModify", entity);
@@ -65,8 +65,8 @@ public class DesignDAO {
 	public void designConInsert(DesignDTO entity) {
 		factory.openSession().insert("my.designMapper.designConInsert", entity);
 	}
-	public void designConDelete(DesignDTO entity) {
-		factory.openSession().delete("my.designMapper.designConDelete", entity);
+	public void designConDelete(int dc_Idx) {
+		factory.openSession().delete("my.designMapper.designConDelete", dc_Idx);
 	}
 	public DesignDTO designConModify(DesignDTO entity) {
 		return factory.openSession().selectOne("my.designMapper.designConModify", entity);

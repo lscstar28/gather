@@ -24,7 +24,7 @@ public class designController {
 		List<DesignDTO> designList = service.designList(tIdx);
 		model.addAttribute("designList", designList);
 		model.addAttribute("tIdx", tIdx);
-		return "design";
+		return "design/design";
 	}
 
 	// 기획주제 작성화면으로 이동-----------------------------------------------
@@ -50,16 +50,15 @@ public class designController {
 	public String designDelete(@RequestParam("dIdx") int didx) {
 		System.out.println("didx: " + didx);
 		service.designDelete(didx);
-		return "designOK";
+		return "design/designOK";
 	}
 
 	// 기획주제 수정 페이지로 이동
 	@RequestMapping(value = "/designModify.do")
-	public String movedesignModify(@RequestParam("dIdx") int didx, Model model) {
-		DesignDTO entity = new DesignDTO();
-		entity = service.designModidy(didx);
-		model.addAttribute("entity", entity);
-		return "designModify";
+	public String movedesignModify(@RequestParam("dIdx") int dIdx,@RequestParam("dName") String dName, Model model) {
+		model.addAttribute("dIdx", dIdx);
+		model.addAttribute("dName", dName);
+		return "design/designModify";
 	}
 
 	// 기획주제 수정하기
@@ -69,7 +68,7 @@ public class designController {
 		entity.setD_Idx(Integer.parseInt(request.getParameter("dIdx")));
 		entity.setD_Name(request.getParameter("d_name"));
 		service.designUpdate(entity);
-		return "designOK";
+		return "design/designOK";
 	}
 	// ---------------------------------------------------------------------------------------
 	// 기획 목적
@@ -80,7 +79,7 @@ public class designController {
 		List<DesignDTO> designPurpList = service.designPurpList(dIdx);
 		model.addAttribute("designPurpList", designPurpList);
 		model.addAttribute("dIdx", dIdx);
-		return "designPurp";
+		return "design/designPurp";
 	}
 
 	// 기획목적 작성화면으로 이동----------------------------------------------
@@ -89,7 +88,7 @@ public class designController {
 		int dIdx = Integer.parseInt(request.getParameter("dIdx"));
 		System.out.println("didx:123123 " + dIdx);
 		model.addAttribute("dIdx", dIdx);
-		return "designPurpWriter";
+		return "design/designPurpWriter";
 	}
 
 	// 기획목적 추가하기
@@ -100,19 +99,14 @@ public class designController {
 		entity.setD_Purp(request.getParameter("d_purp"));
 		service.designPurpInsert(entity);
 		model.addAttribute("entity", entity);
-		return "designPurpOK";
+		return "design/designOK";
 	}
 
 	// 기획목적 삭제하기
 	@RequestMapping(value = "/designPurpDelete.do")
-	public String designPurpDelete(@RequestParam("d_Purp") String purp, @RequestParam("dIdx") int dIdx, Model model) {
-		System.out.println("d_Purp: " + purp);
-		DesignDTO entity = new DesignDTO();
-		entity.setD_Purp(purp);
-		entity.setD_Idx(dIdx);
-		service.designPurpDelete(entity);
-		model.addAttribute("entity", entity);
-		return "designPurpOK";
+	public String designPurpDelete( @RequestParam("dp_Idx") int dp_Idx, Model model) {
+		service.designPurpDelete(dp_Idx);
+		return "design/designOK";
 	}
 
 	// 기획목적수정 페이지로 이동
@@ -130,7 +124,7 @@ public class designController {
 		model.addAttribute("entity", entity);
 //		System.out.println("가져오기: "+entity.getD_Purp());
 
-		return "designPurpModify";
+		return "design/designPurpModify";
 	}
 
 	// 기획목적 수정하기
@@ -147,7 +141,7 @@ public class designController {
 
 		model.addAttribute("entity", entity);
 
-		return "designPurpOK";
+		return "design/designOK";
 	}
 
 	// ---------------------------------------------------------------------------------------
@@ -159,7 +153,7 @@ public class designController {
 		List<DesignDTO> designConList = service.designConList(dIdx);
 		model.addAttribute("designConList", designConList);
 		model.addAttribute("dIdx", dIdx);
-		return "designCon";
+		return "design/designCon";
 	}
 
 	// 기획내용 작성화면으로 이동----------------------------------------------
@@ -167,7 +161,7 @@ public class designController {
 	public String designCon(HttpServletRequest request, Model model) {
 		String dIdx = request.getParameter("dIdx");
 		model.addAttribute("dIdx", dIdx);
-		return "designConWriter";
+		return "design/designConWriter";
 	}
 
 	// 기획내용 추가하기
@@ -178,18 +172,14 @@ public class designController {
 		entity.setD_Con(request.getParameter("d_con"));
 		service.designConInsert(entity);
 		model.addAttribute("entity", entity);
-		return "designConOK";
+		return "design/designOK";
 	}
 
 	// 기획내용 삭제하기
 	@RequestMapping(value = "/designConDelete.do")
-	public String designConDelete(@RequestParam("d_Con") String con, @RequestParam("dIdx") int dIdx, Model model) {
-		DesignDTO entity = new DesignDTO();
-		entity.setD_Con(con);
-		entity.setD_Idx(dIdx);
-		service.designConDelete(entity);
-		model.addAttribute("entity", entity);
-		return "designConOK";
+	public String designConDelete(@RequestParam("dc_Idx") int dc_Idx, Model model) {
+		service.designConDelete(dc_Idx);
+		return "design/designOK";
 	}
 
 	// 기획내용수정 페이지로 이동
@@ -203,7 +193,7 @@ public class designController {
 
 		model.addAttribute("entity", entity);
 
-		return "designConModify";
+		return "design/designConModify";
 	}
 
 	// 기획내용 수정하기
@@ -218,7 +208,7 @@ public class designController {
 
 		model.addAttribute("entity", entity);
 
-		return "designConOK";
+		return "design/designOK";
 	}
 
 }

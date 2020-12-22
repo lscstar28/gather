@@ -424,4 +424,5 @@ INSERT INTO CONFERENCE VALUES(SQ_CIDX.nextval, #{c_title}, #{c_content}, SYSDATE
 SELECT * FROM CONFERENCE WHERE T_IDX=1
 SELECT COUNT(*) FROM CONFERENCE
 
+
 >>>>>>> branch 'master' of https://github.com/lscstar28/gather.git

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="asset/css/Workspace.css">
 </head>
 <script>
 	function checkBoardWrite() {
@@ -18,27 +19,42 @@
 	}
 </script>
 <body>
-<form name="designWriteForm" method="post" action="designConUpdate.do">
-	<input type="hidden" id="dIdx" name="dIdx" value="${entity.d_Idx}"><br>
-	<input type="hidden" id="dc_Idx" name="dc_Idx" value="${entity.dc_Idx}"><br>
+<!-- head -->
+	<div class="head">
+	<%@ include file="/WEB-INF/view/parts/head.jsp" %>
+	</div>
+	<div class="wrap">
+		<div class="side">
+			<%@ include file="/WEB-INF/view/parts/side.jsp"%>
+		</div>
+		<div class="body">
+			<div class="mainCon">
+				<form name="designWriteForm" method="post" action="designConUpdate.do">
+					<input type="hidden" id="dIdx" name="dIdx" value="${entity.d_Idx}"><br>
+					<input type="hidden" id="dc_Idx" name="dc_Idx" value="${entity.dc_Idx}"><br>
+					<h4>기획 내용 수정</h4>
+					<table border="1">
+						<tr>
+							<td>기획내용</td>
+							<td>
+								<input type="text" id="d_con" name="d_con" size="50" value="${entity.d_Con}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<input type="button" value="저장하기" onclick="checkBoardWrite();" />
+								<input type="reset" value="다시작성" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+		<%@ include file="/WEB-INF/view/parts/foot.jsp"%>
+	</div>
 
-	<h3>기획</h3>
-	<table border="1">
-		<tr>
-			<td>기획내용</td>
-			<td>
-				<input type="text" id="d_con" name="d_con" size="50" value="${entity.d_Con}" />
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="button" value="저장하기" onclick="checkBoardWrite();" />
-				<input type="reset" value="다시작성" />
-			</td>
-		</tr>
-	</table>
-
-</form>
 
 </body>
 </html>

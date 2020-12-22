@@ -32,4 +32,15 @@ public class WorkService {
 			dao.workBack(widx);
 		}
 	}
+	public void workDelete(int widx) {
+		dao.workDelete(widx);
+	}
+
+	public WorkDTO workModidy(int widx) {
+		return dao.workModidy(widx);
+	}
+
+	public void workUpdate(WorkDTO entity) {
+		dao.workUpdate(entity);
+	}
 }

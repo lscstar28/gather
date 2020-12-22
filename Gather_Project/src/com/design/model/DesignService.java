@@ -27,10 +27,6 @@ public class DesignService {
 		dao.designDelete(didx);
 	}
 
-	public DesignDTO designModidy(int didx) {
-		return dao.designModidy(didx);
-	}
-
 	public void designUpdate(DesignDTO entity) {
 		dao.designUpdate(entity);
 	}
@@ -47,8 +43,8 @@ public class DesignService {
 		dao.designPurpInsert(entity);
 	}
 
-	public void designPurpDelete(DesignDTO entity) {
-		dao.designPurpDelete(entity);	
+	public void designPurpDelete(int dp_Idx) {
+		dao.designPurpDelete(dp_Idx);	
 	}
 	
 	public DesignDTO designPurpModify(DesignDTO entity) {
@@ -71,8 +67,8 @@ public class DesignService {
 	public void designConInsert(DesignDTO entity) {
 		dao.designConInsert(entity);
 	}
-	public void designConDelete(DesignDTO entity) {
-		dao.designConDelete(entity);	
+	public void designConDelete(int dc_Idx) {
+		dao.designConDelete(dc_Idx);	
 	}
 
 	public DesignDTO designConModify(DesignDTO entity) {

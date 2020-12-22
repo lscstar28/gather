@@ -46,14 +46,14 @@
 			SELECT D_IDX AS DIDX, D_NAME AS DNAME FROM DESIGN WHERE T_IDX=#{tIdx}
 		]]>
 	</select>
-	<select id="getdesignPurpose" parameterType="java.lang.Integer" resultType="java.lang.String">
+	<select id="getdesignPurpose" parameterType="java.lang.Integer" resultType="DesignDTO">
 		<![CDATA[
-			SELECT D_PURP FROM D_PURP WHERE D_IDX=#{dIdx}
+			SELECT * FROM D_PURP WHERE D_IDX = #{d_Idx}
 		]]>
 	</select>
-	<select id="getdesignContent" parameterType="java.lang.Integer" resultType="java.lang.String">
+	<select id="getdesignContent" parameterType="java.lang.Integer" resultType="DesignDTO">
 		<![CDATA[
-			SELECT D_CON FROM D_CON WHERE D_IDX=#{dIdx}
+			SELECT * FROM D_CON WHERE D_IDX=#{d_idx}
 		]]>
 	</select>
 	

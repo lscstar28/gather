@@ -35,5 +35,7 @@
 			
 			SELECT * FROM CONFERENCE WHERE T_IDX=1;
 			
-			selec
+			select * from design;
+			delete design;
+			
 			

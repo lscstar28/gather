@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gather.entity.DesignDTO;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.MemberDTO;
 import com.gather.entity.TeamDTO;
@@ -64,8 +65,8 @@ public class mainDPController {
 			DesignDTOR des = service.getDesign(tIdx);					// 팀의 기획 정보((dIdx,dName)
 			if(des != null) {
 				//==========	디자인이 비어있지 않을 시 디자인 정보 불러오기	==========
-				List<String> purp = service.designPurpose(des.getdIdx());	//기획 목적
-				List<String> dCon = service.designContent(des.getdIdx());	//기획 내용(기능)
+				List<DesignDTO> purp = service.designPurpose(des.getdIdx());	//기획 목적
+				List<DesignDTO> dCon = service.designContent(des.getdIdx());	//기획 내용(기능)
 				model.addAttribute("des", des);
 				model.addAttribute("purp", purp);
 				model.addAttribute("dCon", dCon);

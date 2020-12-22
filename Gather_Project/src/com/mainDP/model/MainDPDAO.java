@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gather.entity.DesignDTO;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
@@ -102,26 +103,26 @@ public class MainDPDAO {
 		return dto;
 	}
 
-	public List<String> designPurpose(int dIdx) {
+	public List<DesignDTO> designPurpose(int dIdx) {
 		System.out.println("dao getdesignPurpose : " + dIdx);
 		SqlSession session = factory.openSession();
-		List<String> list = null;
+		List<DesignDTO> list = null;
 		synchronized (factory) {
 			try {
 				list = session.selectList("my.gather-mapping.getdesignPurpose", dIdx);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-session.close();
+				session.close();
 			}
 		}
 		return list;
 	}
 
-	public List<String> designContent(int dIdx) {
+	public List<DesignDTO> designContent(int dIdx) {
 		System.out.println("dao getdesignContent : " + dIdx);
 		SqlSession session = factory.openSession();
-		List<String> list = null;
+		List<DesignDTO> list = null;
 		synchronized (factory) {
 			try {
 				list = session.selectList("my.gather-mapping.getdesignContent", dIdx);

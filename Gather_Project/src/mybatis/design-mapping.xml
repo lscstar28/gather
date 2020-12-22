@@ -48,9 +48,9 @@
 		]]>
 	</insert>
 	
-	<delete id="designPurpDelete" parameterType="DesignDTO">
+	<delete id="designPurpDelete" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE D_PURP WHERE D_PURP = #{d_Purp}
+			DELETE D_PURP WHERE DP_IDX = #{dp_Idx}
 		]]>
 	</delete>
 	
@@ -83,9 +83,9 @@
 	</insert>
 
 	
-	<delete id="designConDelete" parameterType="DesignDTO">
+	<delete id="designConDelete" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE D_CON WHERE D_CON = #{d_Con}
+			DELETE D_CON WHERE DC_IDX = #{dc_Idx}
 		]]>
 	</delete>
 	

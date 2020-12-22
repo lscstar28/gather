@@ -34,7 +34,7 @@
 					<!-- 팀원 테이블 -->
 					<table>
 						<tr>
-						<td style="background-color: #D6C5BF;">-----팀원 -----</td>
+						<td class="thead">-----팀원 -----</td>
 						</tr>
 						<c:forEach items="${mlist}" var="ob">
 						<tr>
@@ -43,7 +43,7 @@
 						</c:forEach>
 						<c:if test="${clist[0] != null}">
 						<tr>
-						<td style="background-color: #D6C5BF;">-----응답 대기중 -----</td>
+						<td class="thead">-----응답 대기중 -----</td>
 						</tr>
 						<c:forEach items="${clist}" var="ob">
 						<tr>
@@ -66,40 +66,46 @@
 					<c:if test="${!empty des.dName}">
 					<table>
 						<tr>
-						<td style="background-color: #D6C5BF;">기획 주제 </td>
+						<td class="thead">기획 주제 </td>
 						</tr>
 						<tr>
-						<td><a href="designModify.do?">${des.dName}</a></td>
+						<td><a href="designModify.do?dIdx=${des.dIdx}&dName=${des.dName}">${des.dName}</a></td>
 						</tr>
 					</table>
 					<div class="listBox">
 						<div class="parts">
 						<table>
 							<tr>
-							<td style="background-color: #D6C5BF;">-----기획목적 -----</td>
+							<td class="thead" colspan="2">-----기획목적 -----</td>
 							</tr>
-							<c:forEach items="${purp}" var="ob">
+							<c:if test="${!empty purp}">
+								<c:forEach items="${purp}" var="ob">
+								<tr>
+								<td><a href="designPurpModify.do?d_Purp=${ob.d_Purp}&dp_Idx=${ob.dp_Idx}&dIdx=${des.dIdx}">${ob.d_Purp}</a></td>
+								<td width="30px"><input type="button" value="삭제" onclick="location.href='designPurpDelete.do?dp_Idx=${ob.dp_Idx}'"></td>
+								</tr>
+								</c:forEach>
+							</c:if>
 							<tr>
-							<td>${ob}</td>
-							</tr>
-							</c:forEach>
-							<tr>
-							<td><input type="button" value="추가하기"></td>
+							<td colspan="2"><input type="button" value="추가하기" onclick="location.href='designPurpInsert.do?dIdx=${des.dIdx}'"></td>
 							</tr>
 						</table>
 						</div>
 						<div class="parts">
 						<table>
 							<tr>
-							<td style="background-color: #D6C5BF;">-----기획내용-----</td>
+							<td class="thead" colspan="2">-----기획내용-----</td>
 							</tr>
-							<c:forEach items="${dCon}" var="ob">
+							<c:if test="${!empty purp}">
+								<c:forEach items="${dCon}" var="ob">
+								<tr>
+								<td><a href="designConModify.do?d_Con=${ob.d_Con}&dc_Idx=${ob.dc_Idx}&dIdx=${des.dIdx}">${ob.d_Con}</a></td>
+								<td width="30px"><input type="button" value="삭제" onclick="location.href='designConDelete.do?dc_Idx=${ob.dc_Idx}'"></td>
+								</tr>
+								</c:forEach>
+							</c:if>
 							<tr>
-							<td>${ob}</td>
-							</tr>
-							</c:forEach>
-							<tr>
-							<td><input type="button" value="추가하기"></td>
+							<td colspan="2"><input type="button" value="추가하기" onclick="location.href='designConInsert.do?dIdx=${des.dIdx}'"></td>
 							</tr>
 						</table>
 						</div>
@@ -117,27 +123,29 @@
 					<c:if test="${!empty wlist}">
 					<table>
 						<tr>
-						<td colspan="2" style="background-color: #D6C5BF;">-----업무 -----</td>
+						<td colspan="3" class="thead">-----업무 -----</td>
 						</tr>
 						<tr>
 						<td>업무 이름</td>
 						<td>담당자</td>
+						<td>삭제</td>
 						</tr>
 						<c:forEach items="${wlist}" var="ob">
 						<tr>
-						<td>${ob.work}</td>
+						<td><a href="workModify.do?wIdx=${ob.wIdx}">${ob.work}</a></td>
 						<td>${ob.wMem}</td>
+						<td width="30px"><input type="button" value="삭제" onclick="location.href='workDelete.do?wIdx=${ob.wIdx}'"></td>
 						</tr>
 						</c:forEach>
 						<tr>
-						<td colspan="2"><input type="button" value="추가하기" onclick="location.href='workInsert.do?tIdx=${tIdx}'"></td>
+						<td colspan="3"><input type="button" value="추가하기" onclick="location.href='workInsert.do?tIdx=${tIdx}'"></td>
 						</tr>
 					</table>
 					<div class="listBox">
 						<div class="parts">
 							<table>
 								<tr>
-								<td colspan="3" style="background-color: #D6C5BF;">-----진행도 -----</td>
+								<td colspan="3" class="thead">-----진행도 -----</td>
 								</tr>
 								<tr>
 								<td>업무 이름</td>
@@ -173,7 +181,7 @@
 
 							<table>
 								<tr>
-								<td colspan="3" style="background-color: #D6C5BF;">-----진행 날짜 -----</td>
+								<td colspan="3" class="thead">-----진행 날짜 -----</td>
 								</tr>
 								<tr>
 								<td>업무 이름</td>

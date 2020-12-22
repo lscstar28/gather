@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gather.entity.DesignDTO;
 import com.gather.entity.DesignDTOR;
 import com.gather.entity.TeamDTO;
 import com.gather.entity.WorkDTO;
@@ -42,11 +43,11 @@ public class MainDPService {
 		return dao.getDesign(tIdx);
 	}
 
-	public List<String> designPurpose(int dIdx) {
+	public List<DesignDTO> designPurpose(int dIdx) {
 		return dao.designPurpose(dIdx);
 	}
 
-	public List<String> designContent(int dIdx) {
+	public List<DesignDTO> designContent(int dIdx) {
 		return dao.designContent(dIdx);
 	}
 

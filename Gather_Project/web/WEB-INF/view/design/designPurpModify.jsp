@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="asset/css/Workspace.css">
 </head>
 <script>
 	function checkBoardWrite() {
@@ -18,27 +19,41 @@
 	}
 </script>
 <body>
-<form name="designWriteForm" method="post" action="designPurpUpdate.do">
-	<input type="hidden" id="dIdx" name="dIdx" value="${entity.d_Idx}"><br>
-	<input type="hidden" id="dp_Idx" name="dp_Idx" value="${entity.dp_Idx}"><br>
 
-	<h3>기획</h3>
-	<table border="1">
-		<tr>
-			<td>기획목적</td>
-			<td>
-				<input type="text" id="d_purp" name="d_purp" size="50" value="${entity.d_Purp}" />
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="button" value="저장하기" onclick="checkBoardWrite();" />
-				<input type="reset" value="다시작성" />
-			</td>
-		</tr>
-	</table>
-
-</form>
-
+<!-- head -->
+	<div class="head">
+	<%@ include file="/WEB-INF/view/parts/head.jsp" %>
+	</div>
+	<div class="wrap">
+		<div class="side">
+			<%@ include file="/WEB-INF/view/parts/side.jsp"%>
+		</div>
+		<div class="body">
+			<div class="mainCon">
+				<form name="designWriteForm" method="post" action="designPurpUpdate.do">
+					<input type="hidden" id="dIdx" name="dIdx" value="${entity.d_Idx}"><br>
+					<input type="hidden" id="dp_Idx" name="dp_Idx" value="${entity.dp_Idx}"><br>
+					<h4>기획 목적 수정</h4>
+					<table border="1">
+						<tr>
+							<td>기획목적</td>
+							<td>
+								<input type="text" id="d_purp" name="d_purp" size="50" value="${entity.d_Purp}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<input type="button" value="저장하기" onclick="checkBoardWrite();" />
+								<input type="reset" value="다시작성" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="foot">
+		<%@ include file="/WEB-INF/view/parts/foot.jsp"%>
+	</div>
 </body>
 </html>
