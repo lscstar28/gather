@@ -21,6 +21,7 @@
 			<div class="mainCon">
 				<form id="CFWriter" method="post" action="CFModify.do">
 				 	<input type="hidden" name="cIdx" value="${entity.c_Idx}">
+				 	<input type="hidden" name="tIdx" value="${tIdx}">
 					<h4>회의수정</h4>
 					<table border="1" >
 						<tr>

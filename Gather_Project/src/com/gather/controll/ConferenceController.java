@@ -22,6 +22,7 @@ public class ConferenceController {
 	public String conferenceList(@RequestParam("tIdx") int tIdx, Model model) {
 		List<ConferenceDTO> conferenceList = service.conferenceList(tIdx);
 		model.addAttribute("conferenceList",conferenceList);
+		
 		model.addAttribute("tIdx",tIdx);
 		return "conference/conference";
 	}
@@ -41,22 +42,25 @@ public class ConferenceController {
 			entity.setC_title(request.getParameter("CFTitle"));
 			entity.setC_content(request.getParameter("CFContent"));
 			service.conferenceInsert(entity);
+			model.addAttribute("tIdx",entity.getT_idx());
 			return "conference/conferenceWriteOK";
 		}
 		
 	// 회의 삭제하기
 			@RequestMapping(value = "/conferenceDelete.do")
-			public String conferenceDelete(@RequestParam("cIdx") int cidx) {
+			public String conferenceDelete(@RequestParam("cIdx") int cidx,@RequestParam("tIdx") int tIdx, Model model) {
 				service.conferenceDelete(cidx);
+				model.addAttribute("tIdx",tIdx);
 				return "conference/conferenceWriteOK";
 			}
 			
 	// 회의 수정하기 위한 write 가기
 			@RequestMapping(value = "/conferenceModify.do")
-			public String conferenceModify(@RequestParam("cIdx") int cidx, Model model) {
+			public String conferenceModify(@RequestParam("cIdx") int cidx,@RequestParam("tIdx") int tIdx, Model model) {
 				ConferenceDTO entity = new ConferenceDTO();
 				entity = service.conferenceModidy(cidx);
 				model.addAttribute("entity",entity);
+				model.addAttribute("tIdx",tIdx);
 				return "conference/conferenceModify";
 			}
 	
@@ -66,9 +70,11 @@ public class ConferenceController {
 				
 				ConferenceDTO entity = new ConferenceDTO();
 				entity.setC_Idx(Integer.parseInt(request.getParameter("cIdx")));
+				entity.setT_idx(Integer.parseInt(request.getParameter("tIdx")));
 				entity.setC_title(request.getParameter("CFTitle"));
 				entity.setC_content(request.getParameter("CFContent"));
 				service.conferenceUpdate(entity);
+				model.addAttribute("tIdx",entity.getT_idx());
 				return "conference/conferenceWriteOK";
 			}
 			

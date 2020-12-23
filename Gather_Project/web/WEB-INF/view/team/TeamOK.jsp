@@ -10,7 +10,7 @@
 </head>
 <body>
 OK
-<c:url var="url1" value="LastTeam.do?mIdx=${mIdx}&tIdx=${tIdx}">
+<c:url var="url1" value="mainDP.do">
 </c:url>
 <c:redirect url="${url1}"/>
 </body>

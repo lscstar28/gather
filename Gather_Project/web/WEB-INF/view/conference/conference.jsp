@@ -20,6 +20,7 @@
 		</div>
 		<div class="body">
 			<div class="mainCon">
+			<h4>회의록</h4>
 				<c:if test="${!empty conferenceList}">
 					<c:forEach items="${conferenceList}" var="ob">
 					<br>
@@ -39,8 +40,8 @@
 							</tr>
 						</table>
 						<br>
-						<input type="button" value="삭제하기" onclick="location.href='conferenceDelete.do?cIdx='+'${ob.c_Idx}'">
-						<input type="button" value="수정하기" onclick="location.href='conferenceModify.do?cIdx='+'${ob.c_Idx}'"><br>
+						<input type="button" value="삭제하기" onclick="location.href='conferenceDelete.do?cIdx='+'${ob.c_Idx}&tIdx=${tIdx}'">
+						<input type="button" value="수정하기" onclick="location.href='conferenceModify.do?cIdx=${ob.c_Idx}&tIdx=${tIdx}'"><br>
 					</c:forEach>
 				</c:if>
 				<br>

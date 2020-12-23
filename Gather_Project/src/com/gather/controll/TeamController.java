@@ -74,22 +74,18 @@ public class TeamController {
 	public String confrim(HttpServletRequest request, Model model) {
 		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
 		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
-		int ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
 		int answer = 1;
 		service.confrim(tIdx, mIdx, answer);
 		model.addAttribute("mIdx", mIdx);
-		model.addAttribute("tIdx", ptIdx);
 		return "team/TeamOK";
 	}
 	@RequestMapping(value="/noConfrim.do")
 	public String noConfrim(HttpServletRequest request, Model model) {
 		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
 		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
-		int ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
 		int answer = 2;
 		service.confrim(tIdx, mIdx, answer);
 		model.addAttribute("mIdx", mIdx);
-		model.addAttribute("tIdx", ptIdx);
 		return "team/TeamOK";
 	}
 	

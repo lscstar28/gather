@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<c:url var="url1" value="conference.do?tIdx=1">
+<c:url var="url1" value="conference.do?tIdx=${tIdx}">
 </c:url>
 <c:redirect url="${url1}"/>
 </body>
