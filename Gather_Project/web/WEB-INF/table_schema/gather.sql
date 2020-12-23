@@ -316,6 +316,14 @@ CREATE SEQUENCE SQ_CIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 회�
 CREATE SEQUENCE SQ_DPIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 기획목적번호 생성 */
 CREATE SEQUENCE SQ_DCIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;	/* 기획내용번호 생성 */
 
+drop sequence SQ_MIDX;
+drop sequence SQ_TIDX;
+drop sequence SQ_WIDX;
+drop sequence SQ_DIDX;
+drop sequence SQ_CIDX;
+drop sequence SQ_DPIDX;
+drop sequence SQ_DCIDX;
+
 --------------------관리자ID----------------------
 INSERT INTO MEMBER VALUES(1, 'admin', 'admin', '신동재', '01012345678');
 INSERT INTO MEMBER VALUES(2, 'abcd', 'abcd', '김경동', '01011112222');
@@ -411,7 +419,7 @@ CREATE SEQUENCE SQ_WIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 CREATE SEQUENCE SQ_DIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 CREATE SEQUENCE SQ_CIDX INCREMENT BY 1  START WITH 100 NOCYCLE NOCACHE;
 
-drop sequence SQ_MIDX;
+
 select * from seq
 select * from work
 

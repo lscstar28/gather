@@ -56,6 +56,7 @@ public class mainDPController {
 			System.out.println("마지막에 수정한 팀의 이름" + selTeam.gettName());
 			List<String> mlist = service.TeamMember(tIdx);		//팀 맴버 리스트
 			List<String> clist = service.CallMember(tIdx);		//대기중인 팀 맴버 리스트
+			session.setAttribute("tIdx", tIdx);	
 			model.addAttribute("tIdx", tIdx);
 			model.addAttribute("tName", selTeam.gettName());
 			model.addAttribute("mlist", mlist);

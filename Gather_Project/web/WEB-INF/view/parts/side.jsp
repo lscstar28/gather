@@ -15,8 +15,18 @@
 			<h3 style="text-align: center;">응답 대기중</h3>
 				<c:forEach items="${confirmList}" var="ob">
 					<li>${ob.tIdx} : ${ob.tName}<br>
-					<input type="button" value="수락" onclick="location.href='confrim.do?tIdx=${ob.tIdx}&mIdx=${sessionScope.logOK.m_idx}&ptIdx=${tIdx}'">
-					<input type="button" value="취소" onclick="location.href='noConfrim.do?tIdx=${ob.tIdx}&mIdx=${sessionScope.logOK.m_idx}&ptIdx=${tIdx}'">
+					<form name="confrim" action="confrim.do" method="POST">
+						<input type="hidden" name="tIdx" value="${ob.tIdx}" />
+						<input type="hidden" name="mIdx" value="${sessionScope.logOK.m_idx}" />
+						<input type="hidden" name="ptIdx" value="${sessionScope.tIdx}" />
+						<input type="submit" value="수락">
+					</form>
+					<form name="confrim" action="noConfrim.do" method="POST">
+						<input type="hidden" name="tIdx" value="${ob.tIdx}" />
+						<input type="hidden" name="mIdx" value="${sessionScope.logOK.m_idx}" />
+						<input type="hidden" name="ptIdx" value="${sessionScope.tIdx}" />
+						<input type="submit" value="취소">
+					</form>
 					</li>
 				</c:forEach>
 			</c:if>

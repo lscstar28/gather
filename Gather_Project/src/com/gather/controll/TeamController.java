@@ -70,23 +70,39 @@ public class TeamController {
 	}
 	
 	//-------------------- 초대 수락/거절 --------------------
-	@RequestMapping(value="/confrim.do")
+	@RequestMapping(value="/confrim.do", method=RequestMethod.POST)
 	public String confrim(HttpServletRequest request, Model model) {
 		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
 		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
+		int ptIdx = 0;
+		try {
+			ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
+		} catch (NumberFormatException e) {
+			System.out.println("참여하고 있는 팀이 없습니다.");
+			ptIdx = tIdx;
+		}
 		int answer = 1;
 		service.confrim(tIdx, mIdx, answer);
 		model.addAttribute("mIdx", mIdx);
+		model.addAttribute("tIdx", ptIdx);
 		return "team/TeamOK";
 	}
-	@RequestMapping(value="/noConfrim.do")
+	@RequestMapping(value="/noConfrim.do", method=RequestMethod.POST)
 	public String noConfrim(HttpServletRequest request, Model model) {
 		int mIdx = Integer.parseInt(request.getParameter("mIdx"));
 		int tIdx = Integer.parseInt(request.getParameter("tIdx"));
+		int ptIdx = 0;
+		try {
+			ptIdx = Integer.parseInt(request.getParameter("ptIdx"));
+		} catch (NumberFormatException e) {
+			System.out.println("참여하고 있는 팀이 없습니다.");
+			ptIdx = tIdx;
+		}
 		int answer = 2;
 		service.confrim(tIdx, mIdx, answer);
 		model.addAttribute("mIdx", mIdx);
-		return "team/TeamOK";
+		model.addAttribute("tIdx", ptIdx);
+		return "team/noCon";
 	}
 	
 	//-------------------- 팀 나가기 --------------------

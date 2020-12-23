@@ -36,6 +36,10 @@
 			SELECT * FROM CONFERENCE WHERE T_IDX=1;
 			
 			select * from design;
+			
 			delete design;
 			
+			
+			SELECT T_IDX as tIdx, T_NAME as tName
+			FROM TEAM WHERE T_IDX=(SELECT T_IDX FROM L_TEAM WHERE M_IDX=3)
 			

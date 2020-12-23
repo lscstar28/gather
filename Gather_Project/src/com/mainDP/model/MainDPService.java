@@ -60,7 +60,7 @@ public class MainDPService {
 		mt.put("mIdx", mIdx);
 		mt.put("tIdx", tIdx);
 		int n = dao.LastTeam(mt);
-		System.out.println("service" + n);
+		System.out.println("lastTeam 상황 : 1이면 변경, 0이면 생성" + n);
 		if(n==1) {
 			return n;
 		}else {

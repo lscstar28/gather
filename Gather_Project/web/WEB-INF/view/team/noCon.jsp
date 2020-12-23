@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-OK
-<c:url var="url1" value="LastTeam.do?mIdx=${mIdx}&tIdx=${tIdx}">
+NO
+<c:url var="url1" value="mainDP.do">
 </c:url>
 <c:redirect url="${url1}"/>
 </body>
