@@ -28,6 +28,7 @@
 						<input type="submit" value="취소">
 					</form>
 					</li>
+					
 				</c:forEach>
 			</c:if>
 		</ul>
